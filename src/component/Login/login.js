@@ -1,5 +1,6 @@
 import React from 'react';
 import './login.css'
+import LoginOptions from './loginOptions';
 
 function Login() {
   return (
@@ -24,6 +25,7 @@ function Login() {
               placeholder="Enter password"
             />
           </div>
+          <LoginOptions />
           <div className="d-grid gap-2 mt-3">
             <button type="submit" className="btn btn-primary">
               Submit
