@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import React from 'react'
-import logoImg from './/images/logo-ico.png'
+import logoImg from './/images/logo-ico.png';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
-
-
+  let navigate = useNavigate();
+  const HandleButton = () => {
+    navigate('/login');
+  }
   const [navClose, navOpen] = useState({
     Transform: 'scale(1, 0)'
   }
@@ -32,7 +35,7 @@ export default function Header() {
             <li>Coins</li>
             <li>Sign Up</li>
           </ul>
-          <button className='btn'> Sign In </button>
+          <button className='btn' onClick={HandleButton} > Sign In </button>
         </nav>
         <div onClick={navClick} className='menu-toggle'>
           <span className='line1'></span>
