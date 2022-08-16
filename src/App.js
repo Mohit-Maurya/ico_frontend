@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './component/Footer';
 
 import Login from './component/Login/login';
+import DevMain from './component/developer/main';
 import { Routes, Route } from "react-router-dom"
 import Home from './component/Home/home';
 
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
+        <Route path="/developer" element={<DevMain />} />
       </Routes>
         <Footer />
     </div>
