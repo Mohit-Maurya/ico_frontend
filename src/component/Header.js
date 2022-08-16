@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react'
-import logoImg from './/images/logo-ico.jpeg'
+import logoImg from './/images/logo-ico.png'
 
 export default function Header() {
 
