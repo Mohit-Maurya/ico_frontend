@@ -29,7 +29,7 @@ export default function Header() {
       <div className='header'>
         <img className='logo-head' src={logoImg} alt="" />
         <nav style={navClose}>
-          <ul className='nav-link'>
+          <ul className='flex'>
             <li>Home</li>
             <li>About us</li>
             <li>Coins</li>

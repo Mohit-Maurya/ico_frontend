@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import React from 'react';
 
-function App() {
+function DevProfile() {
     return (
         <div className>
             <h3>UPCOMING ICO:</h3>
@@ -44,4 +44,4 @@ function App() {
     );
 }
 
-export default App;
+export default DevProfile;
