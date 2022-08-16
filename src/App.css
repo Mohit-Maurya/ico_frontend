@@ -1,38 +1,491 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700&display=swap');
+
+/* ----Global Styling---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   text-align: center;
+  font-family: 'Public Sans', sans-serif;
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1,
+h2,
+h3 {
+  color: var(--Dark-Blue);
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+::-webkit-scrollbar {
+  width: 0.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+::-webkit-scrollbar-thumb {
+  background-color: var(--Lime-Green);
+  border-radius: 50px;
+  outline: 1px solid green;
+}
+
+p {
+  padding: 0 15px;
+  color: var(--Grayish-Blue);
+  line-height: 2rem;
+  font-size: 16px;
+}
+
+:root {
+
+  --Dark-Blue: hsl(233, 26%, 24%);
+  --Lime-Green: hsl(136, 65%, 51%);
+  --Bright-Cyan: hsl(192, 70%, 51%);
+
+  /* ### Neutral */
+
+  --Grayish-Blue: hsl(233, 8%, 62%);
+  --Light-Grayish-Blue: hsl(220, 16%, 96%);
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --White: hsl(0, 0%, 100%);
+
+  /* ## Typography */
+
+  --Base-font: 18px;
+
+  --border: 1px solid red;
+}
+
+button {
+  padding: 10px 20px;
+  background-image: linear-gradient(to right, var(--Lime-Green), var(--Bright-Cyan));
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50px;
+  margin: 20px;
+  font-size: var(--Base-font);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background-image: linear-gradient(to right, white, rgb(255, 253, 253));
+  color: var(--Lime-Green);
+  outline: 2px solid var(--Lime-Green);
+}
+
+/* --------------------------------------------- Moblie and small Devices Styling First------------------------------------------------- */
+
+/* -----toggle menu styling----- */
+.menu-toggle {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  height: 50px;
+  margin-right: 15px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.menu-toggle span {
+  height: 2px;
+  border-radius: 5px;
+  width: 30px;
+  background-color: black;
+  display: flex;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.line1 {
+  transform: translateY(-7px);
+}
+
+.line3 {
+  transform: translateY(7px);
+}
+
+/*  menu-toggle styling ends here */
+
+
+/* --- Nav-Bar Styling for Mobile First */
+
+.header {
+  padding: 10px 0;
+  background-color: var(--White);
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+  position: relative;
+  z-index: 20;
+}
+
+.header .logo-head {
+  height: 50px;
+  width: 150px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+nav {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  top: 70px;
+  background-color:var(--Light-Grayish-Blue);
+  transition: 0.2s ease;
+  transform-origin: top;
+  transition-delay: 0.1s;
+  transform: scale(1, 0);
+}
+
+.header li {
+  list-style: none;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+/* --- Main Content start here--- */
+
+.intro {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 50px;
+}
+
+.intro-hero {
+  background-image: url('./component/images/bg-intro-mobile.svg');
+  background-position: center;
+  background-size: cover;
+  margin-top: -150px;
+  z-index: 1;
+}
+
+.intro-hero img {
+  width: 100%;
+}
+
+.intro-main h1,
+.intro-main p {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---service section styling starts here--- */
+
+.services h1 {
+  max-width: 300px;
+  margin: 20px auto 10px auto;
+}
+
+.services p {
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.service-box>* {
+  margin-top: 80px;
+}
+
+
+/* ----articles styling starts here */
+
+.articles-heading {
+  margin-top: 80px;
+}
+
+.art-heading-style {
+  font-weight: 400;
+}
+
+.art-section {
+  margin: 60px auto 0 auto;
+  max-width: 500px;
+  transition: 0.3s ease;
+}
+
+.articles-heading img {
+  width: 90%;
+}
+
+.article-box h1,
+.article-box h2,
+.article-box p {
+  text-align: left;
+  margin: 10px 40px 0 40px;
+}
+
+
+.article-box h1 {
+  font-size: 14px;
+  color: var(--Grayish-Blue);
+}
+
+.article-box h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.article-box p {
+  padding-left: 10px;
+}
+
+/* -----Footer----- */
+
+.lower-section {
+  background-color: var(--Dark-Blue);
+  color: #fff;
+  margin-top: 50px;
+}
+
+.bottom-logo {
+  margin: 20px;
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.social-links>* {
+  width: 30px;
+  height: 30px;
+  margin: 10px 15px;
+}
+
+.target-links li {
+  margin-top: 15px;
+  list-style: none;
+}
+
+/* ---- Desktop Media Querry starts Here---- min-width:1200px----- */
+@media (min-width:730px) {
+  .header {
+    background-color: var(--Very-Light-Gray);
+    height: fit-content;
+    height: 70px;
   }
-  to {
-    transform: rotate(360deg);
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #fff;
+    background-color: var(--Very-Light-Gray);
+    max-width: 800px;
+    top: 0;
+    transform: scale(1, 1);
+  }
+
+  nav ul {
+    display: flex;
+    margin-left: 20px;
+  }
+
+  nav ul li {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
+
+@media (min-width:1200px) {
+
+  /* ---navigation section Desktop styling---- */
+
+  nav ul {
+    margin-left: -100px;
+  }
+
+  nav ul li {
+    margin-right: 50px;
+  }
+
+  nav ul li::after {
+    display: block;
+    content: "";
+    width: 0;
+    height: 5px;
+    background-color: var(--Lime-Green);
+    transform: translateY(20px);
+    transition: 0.2s;
+    transform-origin: left;
+  }
+  nav ul li:hover {
+    color: var(--Lime-Green);
+  }
+
+  nav ul li:hover::after {
+    width: 100%;
+  }
+
+  /* ---Intro section Desktop styling---- */
+
+  .intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 100px;
+    margin-bottom: 0;
+  }
+
+  .intro-hero {
+    background-image: url('./component/images/bg-intro-desktop.svg');
+    background-position: calc(16%);
+    background-size: cover;
+    overflow: hidden;
+    transform: scale(1.25);
+  }
+
+  .intro-hero img {
+    margin-right: -150px;
+  }
+
+  .intro-main {
+    text-align: left;
+    max-inline-size: 480px;
+  }
+
+  .intro-main h1 {
+    font-weight: 400;
+    margin-left: 5px;
+  }
+  .intro-main button {
+    margin-left: 15px;
+  }
+
+  /* ---- service section Desktop styling here---- */
+
+  .services {
+    background-color: var(--Very-Light-Gray);
+  }
+
+  .service-box {
+    display: flex;
+    padding: 0 100px;
+    text-align: left;
+
+  }
+
+  .service-box img {
+    margin: 0 auto 0 10px;
+  }
+
+  .service-box h1 {
+    font-size: 1.5rem;
+  }
+
+  .services-intro {
+    text-align: left;
+    width: 100%;
+  }
+
+  .services-intro h1,
+  .services-intro p {
+    width: fit-content;
+    margin: 10px auto 10px 100px;
+  }
+
+  /* ---- Articles section Desktop styling here---- */
+
+
+  .articles-heading {
+    padding: 0 100px;
+    
+  }
+
+  .art-heading-style {
+    text-align: left;
+  }
+
+  .article-box {
+    display: flex;
+    height: max-content;
+    cursor: pointer;
+  }
+
+  .article-box img {
+    height: 250px;
+
+  }
+
+  .article-box img:hover {
+    filter: grayscale(1);
+  }
+
+  .article-box h1,
+  .article-box h2,
+  .article-box p {
+    text-align: left;
+    margin: 10px 20px 0 20px;
+  }
+
+  .article-box p {
+    font-size: 0.8rem;
+  }
+
+  .art-section:hover {
+    transform: scale(1.1);
+    background-color: var(--Light-Grayish-Blue);
+  }
+
+  /* ---- Lower Footer Desktop section styling---- */
+
+  .lower-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 100px;
+  }
+
+  .socials {
+    text-align: left;
+  }
+
+  .lower-section .links-status {
+    display: flex;
+    justify-content: space-between;
+    margin-right: auto;
+    margin-left: 50px;
+    cursor: pointer;
+    text-align: left;
+    width: 400px;
+    transition: 0.2s ease;
+  }
+
+  /* social links transition effect */
+  .social-links>* {
+    transition: 0.2s ease;
+    cursor: pointer;
+  }
+
+  .FB:hover {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(22%) saturate(1247%) hue-rotate(182deg) brightness(94%) contrast(102%);
+  }
+
+  .YT:hover {
+    filter: brightness(0) saturate(100%) invert(29%) sepia(94%) saturate(6437%) hue-rotate(354deg) brightness(95%) contrast(123%);
+  }
+
+  .TW:hover {
+    filter: brightness(0) saturate(100%) invert(71%) sepia(68%) saturate(4674%) hue-rotate(160deg) brightness(91%) contrast(106%);
+  }
+
+  .PT:hover {
+    filter: brightness(0) saturate(100%) invert(14%) sepia(70%) saturate(4823%) hue-rotate(341deg) brightness(97%) contrast(118%);
+  }
+
+  .IG:hover {
+    filter: brightness(0) saturate(100%) invert(29%) sepia(21%) saturate(4560%) hue-rotate(254deg) brightness(94%) contrast(96%);
+  }
+
+  .links-status li:hover {
+    color: var(--Lime-Green);
   }
 }
