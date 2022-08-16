@@ -7,9 +7,6 @@ import DevMain from './component/developer/main';
 import { Routes, Route } from "react-router-dom"
 import Home from './component/Home/home';
 
-// import Login from './component/Login/login';
-
-
 function App() {
   return (
     <div className='app'>
