@@ -68,10 +68,12 @@ function DevICO() {
                             Submit
                         </button>
                     </div>
-
                 </form>
 
             </center>
+            <br/>
+            <br/>
+            <br/>
         </div>
     );
 }

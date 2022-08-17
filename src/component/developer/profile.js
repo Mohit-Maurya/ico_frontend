@@ -1,44 +1,50 @@
 import React from 'react';
 
 function DevProfile() {
+    function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
     return (
         <div className>
-            <h3>UPCOMING ICO:</h3>
-            <table className="table table-striped">
-                <tr>
-                    <th>Coin Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Price Range</th>
-                    <th>Tokens Offered</th>
-                    <th>Tokens Sold</th>
-                </tr>
-                <tbody>
-                    <tr>
-                        <td>dafad</td>
-                        <td>dafad</td>
-                        <td>dafad</td>
-                        <td>dafad</td>
-                        <td>dafad</td>
-                    </tr>
-                </tbody>
-            </table>
+            <center>
+                <div className='card' style={{margin: "50px", width: "70%"}}>
+                    <div className='card-body'>
+                        <h5 class="card-title">Hi! (developer name)</h5>
+                        <center>
+                            <div class="row" style={{margin: "18px"}}>
+                                <div class="col-sm-8">Email</div>
+                                <div class="col-sm-4">email</div>
+                            </div>
+                        </center>
+                        <center>
+                            <div class="row" style={{margin: "18px"}}>
+                                <div class="col-sm-8">Phone number</div>
+                                <div class="col-sm-4">sdfljsfljsdkjlfs</div>
+                            </div>
+                        </center>
+                        <center>
+                            <div class="row" style={{margin: "18px"}}>
+                                <div class="col-sm-8">PAN Card</div>
+                                <div class="col-sm-4">pan card</div>
+                            </div>
+                        </center>
+                        <center>
+                            <div class="row" style={{margin: "18px"}}>
+                                <div class="col-sm-8">Aadhar card</div>
+                                <div class="col-sm-4">aadhar card</div>
+                            </div>
+                        </center>
+                        
+                        <button>Edit your Profile</button>
+                    </div>
 
-
-            <h3>ACTIVE ICO:</h3>
-            <table className="table table-striped">
-                <tr>
-                    <th>Coin Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Final Price</th>
-                    <th>Tokens Sold</th>
-                    <th>Status(under/oversubs)</th>
-                </tr>
-                <tr>
-                    {/* {for loop} */}
-                </tr>
-            </table>
+                </div>
+            </center>
         </div>
     );
 }
