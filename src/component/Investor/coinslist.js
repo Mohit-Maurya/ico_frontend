@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import './coinList.css'
 
 function Coinslist() {
@@ -12,7 +13,8 @@ function Coinslist() {
   const [closedIcos, setClosedIcos] = useState([])
 
   let navigate = useNavigate()
-
+  const user = useSelector((state) => state.user.value)
+  console.log(user," user ")
 
 
   useEffect(() => {

@@ -2,11 +2,16 @@ import React from 'react';
 import '../common/form.css';
 import axios from "axios"
 import { useState } from 'react';
+import {useDispatch,useSelector} from "react-redux";
 import { useNavigate } from 'react-router-dom'
+import {log_in} from "../../features/user"
 
 function Login() {
   const [role, setRole] = useState("investor");
   const [login, setLogin] = useState({ email: "", password: "", error: "" });
+  const user = useSelector((state)=>state.user.value)
+  const dispatch = useDispatch()
+
   let navigate = useNavigate();
 
   const onLogin = (event) => {
@@ -15,18 +20,20 @@ function Login() {
     axios
       .post(`http://localhost:8080/${role}s/login`, login)
       .then((res) => {
-        if (res.data === "Authorized User")
+        console.log(res.data.response)
+        if (res.data.response === "Authorized User")
           {
             console.log("login user: ",login.email)
+            dispatch(log_in({ userid: res.data.userid,loggedin:true,role:role}))
             navigate(`/${role}/coinlist`);
           }
-        if (res.data === "Authorized User") {
+        if (res.data.response === "Authorized User") {
           console.log("login user: ", login.email)
           navigate(`/${role}/coinlist`);
         }
       })
       .catch((err) => {
-        if (err.response.data === "Unauthorised User")
+        if (err.response.data.response === "Unauthorised User")
           setLogin((prevState) => ({
             ...prevState,
             error: "Invalid credentials",
