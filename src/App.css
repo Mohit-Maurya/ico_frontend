@@ -261,8 +261,13 @@ nav {
 
 .lower-section {
   background-color: var(--Dark-Blue);
+  height: 30px;
   color: #fff;
-  margin-top: 50px;
+  /* position: fixed; */
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
 }
 
 .bottom-logo {

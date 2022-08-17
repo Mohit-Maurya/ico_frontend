@@ -1,8 +1,9 @@
 import './App.css';
 // import Articles from './component/Articles';
 import Footer from './component/Footer';
-
 import Login from './component/Login/login';
+import RegistrationDeveloper from './component/Registration/registrationDeveloper';
+import RegistrationInvestor from './component/Registration/registrationInvestor';
 import DevMain from './component/developer/main';
 import DevProfile from './component/developer/profile';
 import DevICO from './component/developer/listcoin';
@@ -20,9 +21,15 @@ function App() {
         <Route path="/investor/coinlist" element={<Coinslist />} />
         <Route path="/investor/main" element={<InvestorMain />} />
         <Route path="/" element={<Home />} />
+
+        <Route path="/registrationDeveloper" element={<RegistrationDeveloper />} />
+        <Route path="/registrationInvestor" element={<RegistrationInvestor />} />
+
+
         <Route path="/developer" element={<DevMain />} />
         <Route path="/developer/profile" element={<DevProfile />} />
         <Route path="/developer/listcoin" element={<DevICO />} />
+
       </Routes>
         <Footer />
     </div>
