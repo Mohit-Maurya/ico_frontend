@@ -126,8 +126,8 @@ function Coinslist() {
   return (
     <div>
       <>
-        <button onClick={(e) => changeStatus(e, "Active")}>Active</button>
         <button onClick={(e) => changeStatus(e, "Upcoming")}>Upcoming</button>
+        <button onClick={(e) => changeStatus(e, "Active")}>Active</button>
         <button onClick={(e) => changeStatus(e, "Closed")}>Closed</button>
       </>
       <br />
