@@ -14,7 +14,6 @@ function DevICO() {
 
     return (
         <div className>
-<<<<<<< Updated upstream
             <h3>List an ICO</h3>
             <center>
 
@@ -62,6 +61,7 @@ function DevICO() {
                             <input className="form-control mt-1" type="" id="whitepaper" name="whitepaper" placeholder="" />
                         </div>
                         <br />
+                        <br />
                     </div>
                     <div className="d-grid gap-2 mt-3">
                         <button type="submit" className="btn" onClick={onSubmit}>
@@ -70,55 +70,6 @@ function DevICO() {
                     </div>
 
                 </form>
-=======
-            <h3>List an IPO</h3>
-            <center>
-
-            <form className='Auth-form'>
-                <div className="form-group mt-3">
-                    <label for="coinname">Name of your coin</label>
-                    <input type="text" id="coinname" name="coinname" />
-                </div>
-                <br/>
-                <div className="form-group mt-3">
-                    <label for="aboutcoin">About the Coin</label>
-                    <input type="textbox" id="aboutcoin" name="aboutcoin" />
-                </div>
-                <br/>
-
-                <div className="form-group mt-3">
-                    <label for="startdate">Start date of your ICO</label>
-                    <input type="date" id="startdate" name="startdate" />
-                </div>
-                <br/>
-
-                <div className="form-group mt-3">
-                    <label for="enddate">End date of your ICO</label>
-                    <input type="date" id="enddate" name="enddate" />
-                </div>
-                <br/>
-                <div className="form-group mt-3">
-                    <label for="minprice">Minimum bid price of your ICO</label>
-                    <input type="number" id="minprice" name="minprice" />
-                </div>
-                <br/>
-                <div className="form-group mt-3">
-                    <label for="maxprice">Maximum bid price of your ICO</label>
-                    <input type="number" id="maxprice" name="maxprice" />
-                </div>
-                <br/>
-                <div className="form-group mt-3">
-                    <label for="min_token_quantity">Minimum token qunatity of ICO lot</label>
-                    <input type="number" id="min_token_quantity" name="min_token_quantity" />
-                </div>
-                <br/>
-                <div className="form-group mt-3">
-                    <label for="whitepaper">Upload your white paper</label>
-                    <input type="" id="whitepaper" name="whitepaper" />
-                </div>
-                <br/>
-            </form>
->>>>>>> Stashed changes
 
             </center>
         </div>
