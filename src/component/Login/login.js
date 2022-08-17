@@ -34,12 +34,14 @@ function Login() {
         // }
       })
       .catch((err) => {
+        // navigate('/login')
         if (err.response.data.response === "Unauthorised User")
-          setLogin((prevState) => ({
-            ...prevState,
-            error: "Invalid credentials",
-          }));
+        setLogin((prevState) => ({
+          ...prevState,
+          error: "Invalid credentials",
+        }));
         console.log(err);
+        window.alert("Invalid credentials!")
       });
 
 

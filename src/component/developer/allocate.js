@@ -10,6 +10,12 @@ function Allocate() {
     const [price, setPrice] = useState({ min: "", max: "" })
     const { state } = useLocation()
     const { coinId } = state
+    
+    const allocate = () => {
+        navigate('/developer')
+        window.alert("You have successfully allocated your coins to your investors! TO THE MOOOONNNN!!!")
+    }
+    
     useEffect(() => {
         // console.log(state,coinId)
         axios.get("http://localhost:8080/coin/" + coinId)
@@ -22,6 +28,7 @@ function Allocate() {
     }, [])
     return (
         <>
+
             <h1>HI</h1>
             <div className="card mx-auto mt-5">
                 <div className="card-body">
@@ -82,7 +89,7 @@ function Allocate() {
                                 You are about to make (total tokens sold in this ico) public!
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Yes!</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={allocate}>Yes!</button>
                                 <button type="button" className="btn btn-primary">No:(</button>
                             </div>
                         </div>
