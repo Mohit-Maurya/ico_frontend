@@ -1,6 +1,5 @@
 import React from 'react';
 import InfoCard from '../common/infoCard';
-import Footer from '../Footer';
 import Header from '../Header/Header';
 import Introduction from '../Introduction';
 
@@ -21,7 +20,6 @@ function Home() {
         <InfoCard icoName='My Gaming ICO' priceRange='Rs 90-120' icoStatus='Closed'/>
         <InfoCard icoName='My New ICO' priceRange='Rs 40-49' icoStatus='Upcoming'/>
       </div>
-      <Footer />
     </div>
   )
 }

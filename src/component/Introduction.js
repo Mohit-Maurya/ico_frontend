@@ -14,7 +14,7 @@ export default function Introduction() {
                     <h1>Next generation ICO</h1>
                     <p>Take your financial life online. Your ICO Coin account will be a one-stop-shop
                         for listing, investing and bidding in the coins.</p>
-                    <button className='btn' onClick={HandleButton} > Register with us</button>
+                    <button className='btn' onClick={HandleButton} > Register with us!</button>
                 </div>
                
             </div>

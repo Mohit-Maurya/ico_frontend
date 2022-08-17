@@ -125,7 +125,7 @@ function DevICO() {
                                 className="form-control mt-1"
                                 type="number" id="token_avail"
                                 name="token_avail"
-                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState,  total_tokens_available: e.target.value})); onChangePrice(e)}}
+                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState,  total_tokens_available: e.target.value}))}}
                                 placeholder="Tokens available" />
                         </div>
                         <br />
