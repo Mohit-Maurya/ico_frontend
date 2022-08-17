@@ -1,16 +1,10 @@
 import React from 'react';
+import DeveloperHeader from '../Header/developerHeader';
 
 function DevProfile() {
-    function myFunction() {
-  var x = document.getElementById("myInput");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
     return (
         <div className>
+        <DeveloperHeader />
             <center>
                 <div className='card' style={{margin: "50px", width: "70%"}}>
                     <div className='card-body'>

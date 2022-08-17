@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import React from 'react'
-import logoImg from './/images/logo-ico.png';
-import { useNavigate } from 'react-router-dom';
+import logoImg from '../images/logo-ico.png';
+// import { useNavigate } from 'react-router-dom';
 
-export default function Header() {
-  let navigate = useNavigate();
-  const HandleButton = () => {
-    navigate('/login');
-  }
+export default function InvestorHeader() {
+  // let navigate = useNavigate();
+  // const viewProfile = () => {
+  //   navigate("/investor/profile")
+  // }
   const [navClose, navOpen] = useState({
     Transform: 'scale(1, 0)'
   }
@@ -30,12 +30,20 @@ export default function Header() {
         <img className='logo-head' src={logoImg} alt="" />
         <nav style={navClose}>
           <ul className='flex'>
-            <li>Home</li>
-            <li>About us</li>
-            <li>Coins</li>
-            <li>Sign Up</li>
+            <li>
+            <a className="nav-link active" aria-current="page" href="/investor/coinlist">
+              Subscribe for ICO
+            </a>
+            </li>
+
+            <li>
+            <a className="nav-link active" aria-current="page" href="/investor/main">
+              Home
+            </a>
+            </li>
+
           </ul>
-          <button className='btn' onClick={HandleButton} > Sign In </button>
+          <button className='btn' > View Profile </button>
         </nav>
         <div onClick={navClick} className='menu-toggle'>
           <span className='line1'></span>

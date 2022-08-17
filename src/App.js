@@ -1,4 +1,4 @@
-import './App.css';
+import './app1.css';
 import Login from './component/Login/login';
 import RegistrationDeveloper from './component/Registration/registrationDeveloper';
 import RegistrationInvestor from './component/Registration/registrationInvestor';
@@ -11,6 +11,7 @@ import InvestorMain from './component/Investor/main';
 import { Routes, Route } from "react-router-dom"
 import Home from './component/Home/home';
 import RegistrationOption from './component/Registration/registrationOption';
+import Footer from './component/Footer';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/developer/listcoin" element={<DevICO />} />
 
       </Routes>
+      <Footer />
        
     </div>
   );

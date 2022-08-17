@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
 import './coinList.css'
+import InvestorHeader from '../Header/investorHeader';
 
 function Coinslist() {
 
@@ -55,6 +56,7 @@ function Coinslist() {
   let upcomingIcosList = upcomingIcos.map((a, i) => {
     return (
       <>
+      <InvestorHeader />
         <div className="card card-ico-coin mx-auto" key={i} style={{width:"70%"}} onClick={(e)=>coinDetail(e,a._id)}>
             <div className='card-body' key={i}>
                   {a._id}

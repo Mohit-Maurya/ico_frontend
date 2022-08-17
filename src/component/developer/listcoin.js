@@ -1,18 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../common/form.css';
-import axios from "axios"
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import DeveloperHeader from '../Header/developerHeader';
 
 function DevICO() {
-
     let navigate = useNavigate();
-
     const onSubmit = (event) => {
         
     }
 
     return (
+        <>
+        <DeveloperHeader />
         <div className>
             <h3>List an ICO</h3>
             <center>
@@ -75,6 +74,7 @@ function DevICO() {
             <br/>
             <br/>
         </div>
+        </>
     );
 }
 

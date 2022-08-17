@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import InvestorHeader from "../Header/investorHeader";
 
 function CoinDetail() {
     const [details, setDetails] = useState({})
@@ -18,6 +19,8 @@ function CoinDetail() {
             .catch((err) => console.log(err))
     }, [])
     return (
+        <>
+        <InvestorHeader />
         <div className="card mx-auto mt-5">
             <div className="card-body">
                 <h3 className="float-start mb-5">{details.token_name}</h3>
@@ -84,6 +87,7 @@ function CoinDetail() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 export default CoinDetail

@@ -1,9 +1,11 @@
 import React from 'react';
+import DeveloperHeader from '../Header/developerHeader';
 
 function DevMain() {
   
   return (
     <div className>
+    <DeveloperHeader />
       <h3>UPCOMING ICO:</h3>
       <table className="table table-striped">
         <tr>
