@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react'
-import logoImg from './/images/logo-ico.png';
+import logoImg from '../images/logo-ico.png';
 import { useNavigate } from 'react-router-dom';
 
 export default function Header() {

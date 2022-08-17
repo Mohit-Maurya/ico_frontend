@@ -1,7 +1,6 @@
 import './App.css';
 // import Articles from './component/Articles';
 import Footer from './component/Footer';
-
 import Login from './component/Login/login';
 import RegistrationDeveloper from './component/Registration/registrationDeveloper';
 import RegistrationInvestor from './component/Registration/registrationInvestor';

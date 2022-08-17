@@ -1,5 +1,5 @@
 import React from 'react';
-import './login.css'
+import '../common/form.css'
 // import LoginOptions from './loginOptions';
 import axios from "axios"
 import { useState } from 'react';
@@ -19,7 +19,7 @@ function Login() {
         if (res.data === "Authorized User")
           {
             console.log("login user: ",login.email)
-            navigate(`/${role}/profile`);
+            navigate(`/${role}/coinlist`);
           }
       })
       .catch((err) => {
@@ -37,10 +37,10 @@ function Login() {
 
   return (
    
-    <div className="Auth-form-container">
-      <form className="Auth-form">
-        <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Sign In as {role} </h3>
+    <div className="form-container">
+      <form className="form">
+        <div className="form-content">
+          <h3 className="form-title">Sign In as {role} </h3>
 
 
          {
