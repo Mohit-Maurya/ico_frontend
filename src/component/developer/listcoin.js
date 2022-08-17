@@ -61,16 +61,19 @@ function DevICO() {
                             <input className="form-control mt-1" type="" id="whitepaper" name="whitepaper" placeholder="" />
                         </div>
                         <br />
+                        <br />
                     </div>
                     <div className="d-grid gap-2 mt-3">
                         <button type="submit" className="btn" onClick={onSubmit}>
                             Submit
                         </button>
                     </div>
-
                 </form>
 
             </center>
+            <br/>
+            <br/>
+            <br/>
         </div>
     );
 }

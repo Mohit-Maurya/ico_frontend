@@ -466,10 +466,12 @@ nav {
   /* ---- Lower Footer Desktop section styling---- */
 
   .lower-section {
+    position: fixed;
+   bottom: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 100px;
+    padding: 30px 10px;
   }
 
   .socials {

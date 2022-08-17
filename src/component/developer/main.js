@@ -1,6 +1,7 @@
 import React from 'react';
 
 function DevMain() {
+  
   return (
     <div className>
       <h3>UPCOMING ICO:</h3>

@@ -1,6 +1,5 @@
 import React from 'react';
-import '../common/form.css'
-// import LoginOptions from './loginOptions';
+import '../common/form.css';
 import axios from "axios"
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
@@ -54,7 +53,8 @@ function Login() {
               </div>
               :
               <div className='role-select'>
-                <button className='btn' id='developers' onClick={(e) => { e.preventDefault(); setRole("investor") }}>Are you a investor?</button>
+
+               <button className='btn' id='developers' onClick={(e)=>{e.preventDefault();setRole("investor")}}>Are you an investor?</button>
               </div>
 
           }
