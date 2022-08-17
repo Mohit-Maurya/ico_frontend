@@ -22,7 +22,7 @@ function Login() {
           }
         if (res.data === "Authorized User") {
           console.log("login user: ", login.email)
-          navigate(`/${role}/profile`);
+          navigate(`/${role}/coinlist`);
         }
       })
       .catch((err) => {
