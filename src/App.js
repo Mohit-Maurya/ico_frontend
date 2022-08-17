@@ -7,6 +7,7 @@ import DevMain from './component/developer/main';
 import DevProfile from './component/developer/profile';
 import DevICO from './component/developer/listcoin';
 import Coinslist from './component/Investor/coinslist';
+import InvestorMain from './component/Investor/main';
 import { Routes, Route } from "react-router-dom"
 import Home from './component/Home/home';
 
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/investor/coinlist" element={<Coinslist />} />
+        <Route path="/investor/main" element={<InvestorMain />} />
         <Route path="/" element={<Home />} />
         <Route path="/developer" element={<DevMain />} />
         <Route path="/developer/profile" element={<DevProfile />} />
