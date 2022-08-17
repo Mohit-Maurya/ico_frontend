@@ -1,4 +1,4 @@
-import './app1.css';
+import './App.css';
 import Login from './component/Login/login';
 import RegistrationDeveloper from './component/Registration/registrationDeveloper';
 import RegistrationInvestor from './component/Registration/registrationInvestor';
@@ -23,8 +23,8 @@ function App() {
     <div className='app'>
       <Header/>
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
 
         <Route path="/investor/coinslist" element={<Coinslist />} />
         <Route path="/investor/main" element={<InvestorMain />} />

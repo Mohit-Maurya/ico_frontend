@@ -5,7 +5,6 @@ function DevMain() {
   
   return (
     <div className>
-<<<<<<< HEAD
     <DeveloperHeader />
       <h3>UPCOMING ICO:</h3>
       <table className="table table-striped">
@@ -27,10 +26,6 @@ function DevMain() {
           </tr>
         </tbody>
       </table> 
-=======
-      <h3>MY UPCOMING ICOs</h3>
->>>>>>> origin/main
-
       <div className='card'>
         <div className='card-body'>
           Upcoming

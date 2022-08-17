@@ -1,15 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../common/form.css';
-import DeveloperHeader from '../Header/developerHeader';
+import axios from "axios"
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+
 
 function DevICO() {
-<<<<<<< HEAD
-    let navigate = useNavigate();
-    const onSubmit = (event) => {
-        
-=======
-
     const navigate = useNavigate();
     const [coinDetails, setCoinDetails] = useState({
         token_name: '', about: '', ico_start_date: '', ico_end_date: '',
@@ -46,12 +42,9 @@ function DevICO() {
             setErr((prevState) => ({ ...prevState, date: "" }))
             console.log(e.target.value)
         }
->>>>>>> origin/main
     }
 
     return (
-        <>
-        <DeveloperHeader />
         <div className>
             <h3>List an ICO</h3>
             <center>
@@ -188,8 +181,8 @@ function DevICO() {
             <br />
             <br />
         </div>
-        </>
     );
+
 }
 
 export default DevICO;
