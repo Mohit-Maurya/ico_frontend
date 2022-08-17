@@ -19,6 +19,11 @@ function Header() {
     Transform: 'scale(1, 0)'
   })
 
+  const DisplayCoinsList = (e) => {
+    e.preventDefault()
+    navigate('/investor/coinslist')
+  }
+
   const SignOut = (e) =>{
     e.preventDefault()
     dispatch(log_out())
@@ -54,11 +59,12 @@ function Header() {
             {
               user.role === "investor" ?
                 <div className='header'>
-                  <img className='logo-head' src={logoImg} alt="logo" />
+                  <a href='/investor/coinslist'><img className='logo-head' src={logoImg} alt="logo" /></a>
                   <nav style={navClose}>
                     <ul className='flex'>
-                      <li>Investor</li>
-                      <li>All Coins</li>
+                      <li><a href='/investor/coinslist'>Coins List</a></li>
+                      <li><a href='/investor/history'>My Transactions</a></li>
+                      <li><a href='/investor/profile'>My Profile</a></li>
                     </ul>
                     <button className='btn btn-danger' onClick={SignOut} > Sign Out </button>
                   </nav>
