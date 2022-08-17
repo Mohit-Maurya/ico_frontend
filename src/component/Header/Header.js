@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   let navigate = useNavigate();
+  const HandleSignUp = () => {
+    navigate('/registrationOption')
+  }
   const HandleButton = () => {
     navigate('/login');
   }
@@ -30,10 +33,8 @@ export default function Header() {
         <img className='logo-head' src={logoImg} alt="" />
         <nav style={navClose}>
           <ul className='flex'>
-            <li>Home</li>
             <li>About us</li>
             <li>Coins</li>
-            <li>Sign Up</li>
           </ul>
           <button className='btn' onClick={HandleButton} > Sign In </button>
         </nav>

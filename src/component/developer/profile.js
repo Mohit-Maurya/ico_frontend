@@ -40,7 +40,7 @@ function DevProfile() {
                             </div>
                         </center>
                         
-                        <button>Edit your Profile</button>
+                        <button >Edit your Profile</button>
                     </div>
 
                 </div>

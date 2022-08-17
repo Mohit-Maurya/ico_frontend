@@ -467,26 +467,12 @@ nav {
 
   .lower-section {
     position: fixed;
-   bottom: 0;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 30px 10px;
   }
 
   .socials {
     text-align: left;
-  }
-
-  .lower-section .links-status {
-    display: flex;
-    justify-content: space-between;
-    margin-right: auto;
-    margin-left: 50px;
-    cursor: pointer;
-    text-align: left;
-    width: 400px;
-    transition: 0.2s ease;
   }
 
   /* social links transition effect */
