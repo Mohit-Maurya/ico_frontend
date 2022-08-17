@@ -19,7 +19,7 @@ function Login() {
         if (res.data === "Authorized User")
           {
             console.log("login user: ",login.email)
-            navigate(`/investor/main`);
+            navigate(`/${role}/profile`);
           }
       })
       .catch((err) => {
