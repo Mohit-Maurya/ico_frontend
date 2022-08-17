@@ -1,44 +1,76 @@
 import React from 'react';
+import '../common/form.css';
+import axios from "axios"
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 function DevICO() {
+
+    let navigate = useNavigate();
+
+    const onSubmit = (event) => {
+        
+    }
+
     return (
         <div className>
-            <h3>UPCOMING ICO:</h3>
-            <table className="table table-striped">
-                <tr>
-                    <th>Coin Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Price Range</th>
-                    <th>Tokens Offered</th>
-                    <th>Tokens Sold</th>
-                </tr>
-                <tbody>
-                    <tr>
-                        <td>dafad</td>
-                        <td>dafad</td>
-                        <td>dafad</td>
-                        <td>dafad</td>
-                        <td>dafad</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3>List an ICO</h3>
+            <center>
 
+                <form className='Auth-form'>
+                    <div className="form-content">
+                        <div className="form-group mt-3">
+                            <label for="coinname">Name of your coin</label>
+                            <input className="form-control mt-1" type="text" id="coinname" name="coinname" placeholder='Name' />
+                        </div>
+                        <br />
+                        <div className="form-group mt-3">
+                            <label for="aboutcoin">About the Coin</label>
+                            <input className="form-control mt-1" type="textarea" id="aboutcoin" name="aboutcoin" placeholder="About" />
+                        </div>
+                        <br />
 
-            <h3>ACTIVE ICO:</h3>
-            <table className="table table-striped">
-                <tr>
-                    <th>Coin Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Final Price</th>
-                    <th>Tokens Sold</th>
-                    <th>Status(under/oversubs)</th>
-                </tr>
-                <tr>
-                    {/* {for loop} */}
-                </tr>
-            </table>
+                        <div className="form-group mt-3">
+                            <label for="startdate">Start date of your ICO</label>
+                            <input className="form-control mt-1" type="date" id="startdate" name="startdate" placeholder="" />
+                        </div>
+                        <br />
+
+                        <div className="form-group mt-3">
+                            <label for="enddate">End date of your ICO</label>
+                            <input className="form-control mt-1" type="date" id="enddate" name="enddate" placeholder="" />
+                        </div>
+                        <br />
+                        <div className="form-group mt-3">
+                            <label for="minprice">Minimum bid price of your ICO (in $)</label>
+                            <input className="form-control mt-1" type="number" id="minprice" name="minprice" placeholder="Minimum price" />
+                        </div>
+                        <br />
+                        <div className="form-group mt-3">
+                            <label for="maxprice">Maximum bid price of your ICO (in $)</label>
+                            <input className="form-control mt-1" type="number" id="maxprice" name="maxprice" placeholder="Maximum price" />
+                        </div>
+                        <br />
+                        <div className="form-group mt-3">
+                            <label for="min_token_quantity">Minimum token qunatity of an ICO lot</label>
+                            <input className="form-control mt-1" type="number" id="min_token_quantity" name="min_token_quantity" placeholder="Minimum token quantity" />
+                        </div>
+                        <br />
+                        <div className="form-group mt-3">
+                            <label for="whitepaper">Upload your white paper</label>
+                            <input className="form-control mt-1" type="" id="whitepaper" name="whitepaper" placeholder="" />
+                        </div>
+                        <br />
+                    </div>
+                    <div className="d-grid gap-2 mt-3">
+                        <button type="submit" className="btn" onClick={onSubmit}>
+                            Submit
+                        </button>
+                    </div>
+
+                </form>
+
+            </center>
         </div>
     );
 }
