@@ -13,7 +13,7 @@ function Home() {
   }
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Introduction />
       <div className='inline-block' style={cardStyles}>
         <InfoCard icoName='DeFi ICO' priceRange='Rs 30-40' icoStatus='Active'/>

@@ -11,6 +11,7 @@ import Coinslist from './component/Investor/coinslist';
 import CoinDetail from './component/Investor/coinDetail';
 import Profile from './component/Investor/profile';
 import InvestorMain from './component/Investor/main';
+import Header from "./component/Header/Header"
 import { Routes, Route } from "react-router-dom"
 import Home from './component/Home/home';
 import RegistrationOption from './component/Registration/registrationOption';
@@ -18,11 +19,11 @@ import RegistrationOption from './component/Registration/registrationOption';
 function App() {
   return (
     <div className='app'>
-
+      <Header/>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
 
-        <Route path="/login" element={<Login />} />
         <Route path="/investor/coinlist" element={<Coinslist />} />
         <Route path="/investor/main" element={<InvestorMain />} />
         <Route path='/investor/coindetails' element={<CoinDetail/>}/>
