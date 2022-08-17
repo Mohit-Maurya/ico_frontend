@@ -2,11 +2,16 @@ import React from 'react';
 import '../common/form.css';
 import axios from "axios"
 import { useState } from 'react';
+import {useDispatch,useSelector} from "react-redux";
 import { useNavigate } from 'react-router-dom'
+import {log_in} from "../../features/user"
 
 function Login() {
   const [role, setRole] = useState("investor");
   const [login, setLogin] = useState({ email: "", password: "", error: "" });
+  const user = useSelector((state)=>state.user.value)
+  const dispatch = useDispatch()
+
   let navigate = useNavigate();
 
   const onLogin = (event) => {
@@ -15,23 +20,28 @@ function Login() {
     axios
       .post(`http://localhost:8080/${role}s/login`, login)
       .then((res) => {
-        if (res.data === "Authorized User")
+        console.log(res.data.response)
+        if (res.data.response === "Authorized User")
           {
             console.log("login user: ",login.email)
-            navigate(`/${role}/coinlist`);
+            dispatch(log_in({ userid: res.data.userid,loggedin:true,role:role}))
+            navigate(`/${role}`);
           }
-        if (res.data === "Authorized User") {
-          console.log("login user: ", login.email)
-          navigate(`/${role}/coinlist`);
-        }
+        // if (res.data.response === "Authorized User") {
+        // if (res.data === "Authorized User") {
+        //   console.log("login user: ", login.email)
+        //   navigate(`/${role}/profile`);
+        // }
       })
       .catch((err) => {
-        if (err.response.data === "Unauthorised User")
-          setLogin((prevState) => ({
-            ...prevState,
-            error: "Invalid credentials",
-          }));
+        // navigate('/login')
+        if (err.response.data.response === "Unauthorised User")
+        setLogin((prevState) => ({
+          ...prevState,
+          error: "Invalid credentials",
+        }));
         console.log(err);
+        window.alert("Invalid credentials!")
       });
 
 
@@ -39,11 +49,11 @@ function Login() {
 
 
   return (
-   
-    <div className="form-container">
-      <form className="form">
-        <div className="form-content">
-          <h3 className="form-title">Sign In as {role} </h3>
+
+    <div className="Auth-form-container">
+      <form className="Auth-form">
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Sign In as {role} </h3>
 
 
           {
@@ -53,8 +63,7 @@ function Login() {
               </div>
               :
               <div className='role-select'>
-
-               <button className='btn' id='developers' onClick={(e)=>{e.preventDefault();setRole("investor")}}>Are you an investor?</button>
+                <button className='btn' id='developers' onClick={(e) => { e.preventDefault(); setRole("investor") }}>Are you a investor?</button>
               </div>
 
           }

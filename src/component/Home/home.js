@@ -1,6 +1,5 @@
 import React from 'react';
 import InfoCard from '../common/infoCard';
-import Header from '../Header/Header';
 import Introduction from '../Introduction';
 
 function Home() {
@@ -13,14 +12,13 @@ function Home() {
   }
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Introduction />
       <div className='inline-block' style={cardStyles}>
         <InfoCard icoName='DeFi ICO' priceRange='Rs 30-40' icoStatus='Active'/>
         <InfoCard icoName='My Gaming ICO' priceRange='Rs 90-120' icoStatus='Closed'/>
         <InfoCard icoName='My New ICO' priceRange='Rs 40-49' icoStatus='Upcoming'/>
       </div>
-
     </div>
   )
 }

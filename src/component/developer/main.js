@@ -5,6 +5,7 @@ function DevMain() {
   
   return (
     <div className>
+<<<<<<< HEAD
     <DeveloperHeader />
       <h3>UPCOMING ICO:</h3>
       <table className="table table-striped">
@@ -26,22 +27,22 @@ function DevMain() {
           </tr>
         </tbody>
       </table> 
+=======
+      <h3>MY UPCOMING ICOs</h3>
+>>>>>>> origin/main
 
+      <div className='card'>
+        <div className='card-body'>
+          Upcoming
+        </div>
+      </div>
 
-      <h3>ACTIVE ICO:</h3>
-      <table className="table table-striped">
-        <tr>
-          <th>Coin Name</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Final Price</th>
-          <th>Tokens Sold</th>
-          <th>Status(under/oversubs)</th>
-        </tr>
-        <tr>
-          {/* {for loop} */}
-        </tr>
-      </table> 
+      <h3>MY ACTIVE ICOs</h3>
+      <div className='card'>
+        <div className='card-body'>
+          Active
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux'
 import axios from "axios";
 import InvestorHeader from "../Header/investorHeader";
 
 function CoinDetail() {
     const [details, setDetails] = useState({})
+    const user = useSelector((state) => state.user.value)
     const [price, setPrice] = useState({ min: "", max: "" })
+    const [bid,setBid] = useState({token_qty:"",bidding_price:""})
+    const [bidErr,setBidErr] = useState({token_qty:"",bidding_price:""})
     const { state } = useLocation()
     const { coinId } = state
     useEffect(() => {
@@ -17,7 +21,31 @@ function CoinDetail() {
                 // console.log(res.data)
             })
             .catch((err) => console.log(err))
+
+        axios.get(`http://localhost:8080/get-bid-by-coin/${coinId}/${user.userid}`)
+                    .then((res)=>{
+                            console.log(res)
+                    })  
+                    .catch((err)=>console.log(err))  
     }, [])
+
+    const changeTokenQuantity=(e)=>{
+        e.preventDefault();
+        if(parseInt(e.target.value)<details.min_token_qty)
+          setBidErr((prevState)=>({...prevState,token_qty:"Minimum token quantity required "+details.min_token_qty}))
+        else
+            setBidErr((prevState)=>({...prevState,token_qty:""}))   
+        setBid((prevState)=>({...prevState,token_qty:parseInt(e.target.value)}))
+    }
+
+    const changeBiddingPrice=(e)=>{
+        if(parseInt(e.target.value)<price.min || parseInt(e.target.value)>price.max)
+          setBidErr((prevState)=>({...prevState,bidding_price:"Bidding price must be in "+price.min+" - "+price.max+" range"}))
+        else
+            setBidErr((prevState)=>({...prevState,bidding_price:""}))   
+        setBid((prevState)=>({...prevState,bidding_price:parseInt(e.target.value)}))
+    }
+
     return (
         <>
         <InvestorHeader />
@@ -63,7 +91,7 @@ function CoinDetail() {
             </div>
             <div >
                 <button type="button" className="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Subscribe
+                    Subscribe!
                 </button>
 
             </div>
@@ -73,15 +101,23 @@ function CoinDetail() {
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Subscribe to ICO! {details.total_tokens_available}</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            ...
+                            <label className="mb-3">Token Quantity &nbsp; &nbsp;</label>
+                            <input id="token_qty" defaultValue={bid.token_qty} type="number" onChange={changeTokenQuantity} />                                                      
+                               <p><span style={{color:"red"}}>{bidErr.token_qty}</span></p>                            
+                            
+                            <label className="mb-3">Bidding Price &nbsp; &nbsp;</label>
+                            <input id="bidding_price" defaultValue={bid.bidding_price} type="number" onChange={changeBiddingPrice}/>
+                            <p><span style={{color:"red"}}>{bidErr.bidding_price}</span></p>
+                           
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" className="btn btn-primary">Subscribe</button>
+
                         </div>
                     </div>
                 </div>

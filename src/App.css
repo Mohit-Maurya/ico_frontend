@@ -39,6 +39,30 @@ p {
   font-size: 16px;
 }
 
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:active {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
 :root {
 
   --Dark-Blue: hsl(233, 26%, 24%);
@@ -380,25 +404,13 @@ nav {
   /* ---- Lower Footer Desktop section styling---- */
 
   .lower-section {
-    display: flex;
-    justify-content: space-between;
+    position: fixed;
     align-items: center;
-    padding: 50px 100px;
+    padding: 30px 10px;
   }
 
   .socials {
     text-align: left;
-  }
-
-  .lower-section .links-status {
-    display: flex;
-    justify-content: space-between;
-    margin-right: auto;
-    margin-left: 50px;
-    cursor: pointer;
-    text-align: left;
-    width: 400px;
-    transition: 0.2s ease;
   }
 
   /* social links transition effect */

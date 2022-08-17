@@ -2,16 +2,34 @@ import { useState } from 'react';
 import React from 'react'
 import logoImg from '../images/logo-ico.png';
 import { useNavigate } from 'react-router-dom';
+import { log_out } from '../../features/user';
+import { useSelector,useDispatch } from 'react-redux';
 
-export default function Header() {
+function Header() {
+  const user = useSelector((state) => state.user.value)
+  const dispatch = useDispatch()
   let navigate = useNavigate();
+  const HandleSignUp = () => {
+    navigate('/registrationOption')
+  }
   const HandleButton = () => {
     navigate('/login');
   }
   const [navClose, navOpen] = useState({
     Transform: 'scale(1, 0)'
+  })
+
+  const DisplayCoinsList = (e) => {
+    e.preventDefault()
+    navigate('/investor/coinslist')
   }
-  )
+
+  const SignOut = (e) =>{
+    e.preventDefault()
+    dispatch(log_out())
+    navigate('/')
+  }
+
   const navClick = () => {
     if (navClose.transform === 'scale(1,0)') {
       navOpen({
@@ -26,24 +44,47 @@ export default function Header() {
 
   return (
     <>
-      <div className='header'>
-        <img className='logo-head' src={logoImg} alt="" />
-        <nav style={navClose}>
-          <ul className='flex'>
-            <li>Home</li>
-            <li>About us</li>
-            <li>Coins</li>
-            <li>Sign Up</li>
-          </ul>
-          <button className='btn' onClick={HandleButton} > Sign In </button>
-        </nav>
-        <div onClick={navClick} className='menu-toggle'>
-          <span className='line1'></span>
-          <span className='line2'></span>
-          <span className='line3'></span>
-        </div>
-      </div>
+      {
+        !user.role ?
+          <div className='header'>
+            <img className='logo-head' src={logoImg} alt="logo" />
+            <nav style={navClose}>
+              <ul className='flex'>
+                <li>Home</li>
+                <li>All Coins</li>
+              </ul>
+              <button className='btn' onClick={HandleButton} > Sign In </button>
+            </nav>
+          </div> : <>
+            {
+              user.role === "investor" ?
+                <div className='header'>
+                  <a href='/investor/coinslist'><img className='logo-head' src={logoImg} alt="logo" /></a>
+                  <nav style={navClose}>
+                    <ul className='flex'>
+                      <li><a href='/investor/coinslist'>Coins List</a></li>
+                      <li><a href='/investor/history'>My Transactions</a></li>
+                      <li><a href='/investor/profile'>My Profile</a></li>
+                    </ul>
+                    <button className='btn btn-danger' onClick={SignOut} > Sign Out </button>
+                  </nav>
+                </div> :
+                <div className='header'>
+                  <a href='/developer'><img className='logo-head' src={logoImg} alt="logo" /></a>
+                  <nav style={navClose}>
+                    <ul className='flex'>
+                      <li><a href='/developer'>Home</a></li>
+                      <li><a href='/developer/listcoin'>Start an ICO</a></li>
+                      <li><a href='/developer/profile'>My Profile</a></li>
+                    </ul>
+                    <button className='btn btn-danger' onClick={SignOut} > Sign Out </button>
+                  </nav>
+                </div>
+            }
+          </>
+      }
     </>
   )
 }
 
+export default Header;
