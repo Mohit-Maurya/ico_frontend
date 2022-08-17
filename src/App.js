@@ -5,8 +5,11 @@ import RegistrationInvestor from './component/Registration/registrationInvestor'
 import DevMain from './component/developer/main';
 import DevProfile from './component/developer/profile';
 import DevICO from './component/developer/listcoin';
+import Devcoinslist from './component/developer/devcoinlist';
+import Allocate from './component/developer/allocate';
 import Coinslist from './component/Investor/coinslist';
 import CoinDetail from './component/Investor/coinDetail';
+import Profile from './component/Investor/profile';
 import InvestorMain from './component/Investor/main';
 import { Routes, Route } from "react-router-dom"
 import Home from './component/Home/home';
@@ -23,6 +26,7 @@ function App() {
         <Route path="/investor/coinlist" element={<Coinslist />} />
         <Route path="/investor/main" element={<InvestorMain />} />
         <Route path='/investor/coindetails' element={<CoinDetail/>}/>
+        <Route path='/investor/profile' element={<Profile />}/>
 
         <Route path="/registrationOption" element={<RegistrationOption />} />
         <Route path="/registrationDeveloper" element={<RegistrationDeveloper />} />
@@ -32,6 +36,8 @@ function App() {
         <Route path="/developer" element={<DevMain />} />
         <Route path="/developer/profile" element={<DevProfile />} />
         <Route path="/developer/listcoin" element={<DevICO />} />
+        <Route path="/developer/coinslist" element={<Devcoinslist />} />
+        <Route path="/developer/allocate" element={<Allocate />} />
 
       </Routes>
        

@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   let navigate = useNavigate();
+  const HandleSignUp = () => {
+    navigate('/registrationOption')
+  }
   const HandleButton = () => {
     navigate('/login');
   }
@@ -27,21 +30,14 @@ export default function Header() {
   return (
     <>
       <div className='header'>
-        <img className='logo-head' src={logoImg} alt="" />
+        <img className='logo-head' src={logoImg} alt="logo" />
         <nav style={navClose}>
           <ul className='flex'>
-            <li>Home</li>
             <li>About us</li>
-            <li>Coins</li>
-            <li>Sign Up</li>
+            <li>All Coins</li>
           </ul>
           <button className='btn' onClick={HandleButton} > Sign In </button>
         </nav>
-        <div onClick={navClick} className='menu-toggle'>
-          <span className='line1'></span>
-          <span className='line2'></span>
-          <span className='line3'></span>
-        </div>
       </div>
     </>
   )
