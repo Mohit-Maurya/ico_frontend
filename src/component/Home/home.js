@@ -1,13 +1,14 @@
 import React from 'react';
-// import Carousel from '../common/carouselCard';
-import First from '../Header/Header';
+import Footer from '../Footer';
+import Header from '../Header/Header';
 import Introduction from '../Introduction';
 
 function Home() {
   return (
     <div>
-      <First />
+      <Header />
       <Introduction />
+      <Footer />
     </div>
   )
 }
