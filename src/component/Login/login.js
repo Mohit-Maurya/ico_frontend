@@ -15,11 +15,6 @@ function Login() {
     axios
       .post(`http://localhost:8080/${role}s/login`, login)
       .then((res) => {
-        if (res.data === "Authorized User")
-          {
-            console.log("login user: ",login.email)
-            navigate(`/${role}/coinlist`);
-          }
         if (res.data === "Authorized User") {
           console.log("login user: ", login.email)
           navigate(`/${role}/profile`);
@@ -39,11 +34,11 @@ function Login() {
 
 
   return (
-   
-    <div className="form-container">
-      <form className="form">
-        <div className="form-content">
-          <h3 className="form-title">Sign In as {role} </h3>
+
+    <div className="Auth-form-container">
+      <form className="Auth-form">
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Sign In as {role} </h3>
 
 
           {
@@ -53,8 +48,7 @@ function Login() {
               </div>
               :
               <div className='role-select'>
-
-               <button className='btn' id='developers' onClick={(e)=>{e.preventDefault();setRole("investor")}}>Are you an investor?</button>
+                <button className='btn' id='developers' onClick={(e) => { e.preventDefault(); setRole("investor") }}>Are you a investor?</button>
               </div>
 
           }

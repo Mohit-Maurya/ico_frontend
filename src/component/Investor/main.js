@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 
 function InvestorMain() {
-  const [activeIcos, setActiveIcos] = useState(["Active 1","Active 2"])
-  const [investedIcos, setInvestedIcos] = useState(["invest 1","invest 2"])
+  const [activeIcos, setActiveIcos] = useState([])
+  const [investedIcos, setInvestedIcos] = useState([])
 
   let listActiveIcos = activeIcos.map((active,i)=>{
     return (
       <>
         <div className="card card-ico-coin mx-auto" key={i} style={{width:"70%"}}>
             <div className='card-body' key={i}>
-                  {active}
+                  {active.status}
             </div>
         </div>
         <br />
@@ -23,7 +23,7 @@ function InvestorMain() {
       <>
         <div className="card card-ico-coin mx-auto" key={i} style={{width:"70%"}}>
             <div className='card-body' key={i}>
-                  {invest}
+                  {invest.status}
             </div>
         </div>
         <br />
@@ -32,6 +32,18 @@ function InvestorMain() {
   })
 
   useEffect(()=>{
+      axios.get("http://localhost:8080/bids-per-status/62fbb8be6f57130f817c8852/Active")
+          .then((res)=>{
+            setActiveIcos([...res.data])
+            console.log(res.data,[...res.data])
+          })
+          .catch((err)=>console.log(err))
+      axios.get("http://localhost:8080/bids-per-status/62fbb8be6f57130f817c8852/Accepted")
+          .then((res)=>{
+            setInvestedIcos([...res.data])
+            console.log(res.data)
+          })
+          .catch((err)=>console.log(err))    
 
   },[])
 

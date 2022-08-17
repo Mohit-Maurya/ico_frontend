@@ -1,6 +1,6 @@
 import React from 'react'
 
-function InvestorPortfolio() {
+function InvestorHistory() {
   return (
     <div>
       Investor's profile is shown here
@@ -8,4 +8,4 @@ function InvestorPortfolio() {
   )
 }
 
-export default InvestorPortfolio
+export default InvestorHistory
