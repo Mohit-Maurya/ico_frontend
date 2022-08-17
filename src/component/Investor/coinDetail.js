@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux'
 import axios from "axios";
 
 function CoinDetail() {
     const [details, setDetails] = useState({})
+    const user = useSelector((state) => state.user.value)
     const [price, setPrice] = useState({ min: "", max: "" })
     const [bid,setBid] = useState({token_qty:"",bidding_price:""})
     const [bidErr,setBidErr] = useState({token_qty:"",bidding_price:""})
@@ -18,6 +20,12 @@ function CoinDetail() {
                 // console.log(res.data)
             })
             .catch((err) => console.log(err))
+
+        axios.get(`http://localhost:8080/get-bid-by-coin/${coinId}/${user.userid}`)
+                    .then((res)=>{
+                            console.log(res)
+                    })  
+                    .catch((err)=>console.log(err))  
     }, [])
 
     const changeTokenQuantity=(e)=>{

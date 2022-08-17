@@ -1,9 +1,10 @@
 import React,{useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import './registrationInvestor.css'
 
 function RegistrationInvestor() {
-
+    let navigate = useNavigate()
     const [password, setPassword] = useState('');
     const [cPassword, setCPassword] = useState('');
     const [showErrorMessage, setShowErrorMessage] = useState(false);
@@ -33,7 +34,10 @@ function RegistrationInvestor() {
         console.log("submit",investorDetails,bank)
         e.preventDefault()
         axios.post("http://localhost:8080/investors",{investorDetails:{...investorDetails},bank:{...bank}})
-                        .then((res)=>console.log(res))
+                        .then((res)=>{
+                          console.log(res)
+                          navigate("/")
+                        })
                         .catch((err)=>console.log(err))
 
     }
