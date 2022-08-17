@@ -70,11 +70,12 @@ function Header() {
                   </nav>
                 </div> :
                 <div className='header'>
-                  <img className='logo-head' src={logoImg} alt="logo" />
+                  <a href='/developer'><img className='logo-head' src={logoImg} alt="logo" /></a>
                   <nav style={navClose}>
                     <ul className='flex'>
-                      <li>Developer</li>
-                      <li>All Coins</li>
+                      <li><a href='/developer'>Home</a></li>
+                      <li><a href='/developer/listcoin'>Start an ICO</a></li>
+                      <li><a href='/developer/profile'>My Profile</a></li>
                     </ul>
                     <button className='btn btn-danger' onClick={SignOut} > Sign Out </button>
                   </nav>
