@@ -51,20 +51,20 @@ function InvestorMain() {
   }, [])
 
   return (
-    <div className='row'>
+    <div className='row mt-5'>
       <div className='col-6'>
-        <div className='card mx-auto'>
+        <div className='card mx-auto' style={{height:"85vh"}}>
           <div className='card-header'>
             Active ICOs
           </div>
-          <div className='card-body' style={{ backgroundColor: "e9ecef" }}>
+          <div className='card-body' style={{ backgroundColor: "e9ecef", overflowY:"scroll" }}>
             {listActiveIcos}
           </div>
         </div>
       </div>
       <div className='col-6'>
-        <div className='card mx-auto'>
-          <div className='card-header'>
+        <div className='card mx-auto' style={{height:"85vh"}}>
+          <div className='card-header' style={{ backgroundColor: "e9ecef", overflowY:"scroll" }}>
             Invested ICOs
           </div>
           <div className='card-body'>

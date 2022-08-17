@@ -1,6 +1,7 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 function InvestorHistory() {
+  
   return (
     <div>
       Investor's profile is shown here
