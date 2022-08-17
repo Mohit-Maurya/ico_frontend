@@ -1,8 +1,13 @@
 import React from 'react'
-import intoImg from './/images/image-mockups.png'
+import intoImg from './/images/image-mockups.png';
+// import { useNavigate } from 'react-router-dom';
 
 
 export default function Introduction() {
+    // let navigate = useNavigate();
+    // const HandleButton = () => {
+    //   navigate('/');
+    // }
     return (
         <>
             <div className='intro'>
