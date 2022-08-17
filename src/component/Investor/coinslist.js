@@ -48,7 +48,7 @@ function Coinslist() {
 
   const coinDetail = (e,id) =>{
     e.preventDefault();
-    console.log(id)
+    console.log(id," onClick")
     navigate("/investor/coindetails",{state:{coinId:id}})  
   }
 

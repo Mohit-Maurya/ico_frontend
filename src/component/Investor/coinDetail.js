@@ -4,14 +4,16 @@ import axios from "axios";
 
 function CoinDetail(){
     const [details,setDetails] = useState({})
+    const [price,setPrice] = useState({min:"",max:""})
     const {state} = useLocation()
     const {coinId} = state
     useEffect(()=>{
-        console.log(state,coinId)
+        // console.log(state,coinId)
         axios.get("http://localhost:8080/coin/"+coinId)
             .then((res)=>{
                 setDetails({...res.data})
-                console.log(res.data)
+                setPrice({...res.data.price_range})
+                // console.log(res.data)
             })
             .catch((err)=>console.log(err))
     },[])
@@ -32,6 +34,23 @@ return(
             </div>
             <div className="row mt-2">
                 <div className="col-3">
+                    <b>Total Number of Token </b>&nbsp; &nbsp; {details.total_tokens_available}      
+                </div>
+                <div className="col-3">
+                    <b>Minimum Token Quantity </b> &nbsp; &nbsp; {details.min_token_qty}
+                </div>
+            </div>
+            <div className="row mt-2">
+                {/* <p>Price Range</p> */}
+                <div className="col-3">
+                    <b>Minimum Price</b>&nbsp; &nbsp; ₹{price.min}      
+                </div>
+                <div className="col-3">
+                    <b>Maximum Price</b> &nbsp; &nbsp; ₹{price.max}
+                </div>
+            </div>
+            <div className="row mt-2">
+                <div className="col-3">
                     <b>Start Date </b> &nbsp; &nbsp; {new Date(details.ico_start_date).toLocaleString("lookup").split(",")[0]}      
                 </div>
                 <div className="col-3">
@@ -40,8 +59,43 @@ return(
             </div>
         </div>
         <div >
-            <button className="btn btn-primary float-end" id="subscribe">Subscribe</button>
+            <button className="btn btn-primary float-end" id="subscribe" data-bs-toggle="modal" data-bs-target="#exampleModal">Subscribe</button>
         </div>
+        {/* <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Create Account</h5>
+                            <button type="button"  className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="col">
+                                <div className="row">
+                                    <div className="col-6 form-group mb-3 ms-auto">
+                                        <label> Select State </label><br />
+                                    </div>    
+                                    <div className="col-6 form-group mb-3 ms-auto">
+                                        <label>Select City </label><br />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-6 form-group mb-3 ms-auto">
+                                        <label >Select Branch </label><br />
+                                    </div>
+                                    <div className="col-6 form-group mb-3 ms-auto">
+                                        <label >Account Type</label><br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary"   data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary"  data-bs-dismiss="modal"></button>
+                        </div>
+                    </div>
+                </div>
+            </div> */}
+
     </div>
 )
 }
