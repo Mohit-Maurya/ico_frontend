@@ -20,7 +20,7 @@ function CoinDetail() {
             .then((res) => {
                 setDetails({ ...res.data })
                 setPrice({ ...res.data.price_range })
-                // console.log(res.data)
+                console.log(res.data)
             })
             .catch((err) => console.log(err))
 
