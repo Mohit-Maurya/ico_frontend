@@ -12,7 +12,6 @@ function InvestorMain() {
   let listActiveIcos = activeIcos.map((active, i) => {
     return (
       <>
-      <InvestorHeader />
         <div className="card card-ico-coin mx-auto" key={i} style={{width:"70%"}}>
             <div className='card-body' key={i}>
                   {active.status}
@@ -38,10 +37,11 @@ function InvestorMain() {
 
   useEffect(() => {
     setInterval(function(){
+      console.log("intervel ----- ")
       axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Active`)
       .then((res) => {
         setActiveIcos([...res.data])
-        console.log(res.data, [...res.data])
+        console.log("Active....",res.data, [...res.data])
       })
      .catch((err) => console.log(err))
     },300000)
