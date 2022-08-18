@@ -29,7 +29,7 @@ function App() {
         <Route path="/coinslisthome" element={<HomeCoinslist />} />
 
         <Route path="/investor/coinslist" element={<Coinslist />} />
-        <Route path="/investor/main" element={<InvestorMain />} />
+        <Route path="/investor" element={<InvestorMain />} />
         <Route path='/investor/coindetails' element={<CoinDetail/>}/>
         <Route path='/investor/profile' element={<Profile />}/>
         <Route path='/investor/history' element={<InvestorHistory />}/>

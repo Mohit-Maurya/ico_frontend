@@ -126,7 +126,7 @@ function CoinDetail() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-primary" onClick={onClickSubscribe}>Subscribe</button>
+                            <button type="button" className="btn btn-primary" onClick={onClickSubscribe} data-bs-dismiss="modal">Subscribe</button>
 
                         </div>
                     </div>

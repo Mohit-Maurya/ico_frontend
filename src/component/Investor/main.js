@@ -36,15 +36,22 @@ function InvestorMain() {
   })
 
   useEffect(() => {
+    axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Active`)
+      .then((res) => {
+        setActiveIcos([...res.data])
+        console.log("Active....",res.data, [...res.data])
+      })
+     .catch((err) => console.log(err))
     setInterval(function(){
-      console.log("intervel ----- ")
+      console.log("intervallll ----- ")
       axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Active`)
       .then((res) => {
         setActiveIcos([...res.data])
         console.log("Active....",res.data, [...res.data])
       })
      .catch((err) => console.log(err))
-    },300000)
+    }
+    ,300000)
     axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Accepted`)
       .then((res) => {
         setInvestedIcos([...res.data])
