@@ -13,7 +13,7 @@ function InfoCard({icoName, priceRange, icoStatus, coinDetailRoute}) {
     <div className="card-body">
       <h5 className="card-title">{icoName}</h5>
       <h6 className="card-subtitle mb-2 text-muted">{priceRange}/per Token</h6>
-      <sapn className="card-text">Status: {icoStatus}</sapn>
+      <span className="card-text">Status: {icoStatus}</span>
       <button className="btn" onClick={viewDetails} >View Details</button>
     </div>
   </div>

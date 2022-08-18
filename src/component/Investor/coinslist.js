@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './coinList.css'
+import InvestorHeader from '../Header/investorHeader';
 
 function Coinslist() {
 
@@ -57,21 +58,12 @@ function Coinslist() {
   let upcomingIcosList = upcomingIcos.map((a, i) => {
     return (
       <>
-        <div className="card card-ico-coin mx-auto" key={i} style={{ width: "70%" }} onClick={(e) => coinDetail(e, a._id)}>
-          <div className='card-body' key={i}>
-            <div className='row'>
-              <div className='col-9 float-start'>
-                <h4>{a.token_name}</h4>
-              </div>
-              <div className='col-3 float-end'>
-                <p><span style={{ color: "orange", fontWeight: "bold" }}> Upcoming</span></p>
-              </div>
-              <pre>Start Date {new Date(a.ico_start_date).toLocaleString("lookup").split(",")[0]} &nbsp; &nbsp;
-                End Date {new Date(a.ico_end_date).toLocaleString("lookup").split(",")[0]}
-              </pre>
+      <InvestorHeader />
+        <div className="card card-ico-coin mx-auto" key={i} style={{width:"70%"}} onClick={(e)=>coinDetail(e,a._id)}>
+            <div className='card-body' key={i}>
+                  {a._id}
             </div>
           </div>
-        </div>
         <br />
       </>
     )
@@ -126,8 +118,8 @@ function Coinslist() {
   return (
     <div>
       <>
-        <button onClick={(e) => changeStatus(e, "Active")}>Active</button>
         <button onClick={(e) => changeStatus(e, "Upcoming")}>Upcoming</button>
+        <button onClick={(e) => changeStatus(e, "Active")}>Active</button>
         <button onClick={(e) => changeStatus(e, "Closed")}>Closed</button>
       </>
       <br />

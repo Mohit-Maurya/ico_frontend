@@ -32,11 +32,21 @@ function Profile() {
               </div>
             </center>
 
-            <button >Edit your Profile</button>
+            {/* <button >Edit your Profile</button> */}
+          </div>
+
+        </div>
+        <div className='card' style={{ margin: "50px", width: "70%" }}>
+          <div className='card-body'>
+            <h5 class="card-title">My Investments</h5>
+
+
+
           </div>
 
         </div>
       </center>
+
     </div>
   )
 }

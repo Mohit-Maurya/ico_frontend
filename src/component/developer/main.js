@@ -1,9 +1,11 @@
 import React from 'react';
+import DeveloperHeader from '../Header/developerHeader';
 
 function DevMain() {
   
   return (
     <div className>
+    <DeveloperHeader />
       <h3>UPCOMING ICO:</h3>
       <table className="table table-striped">
         <tr>
@@ -24,22 +26,18 @@ function DevMain() {
           </tr>
         </tbody>
       </table> 
+      <div className='card'>
+        <div className='card-body'>
+          Upcoming
+        </div>
+      </div>
 
-
-      <h3>ACTIVE ICO:</h3>
-      <table className="table table-striped">
-        <tr>
-          <th>Coin Name</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Final Price</th>
-          <th>Tokens Sold</th>
-          <th>Status(under/oversubs)</th>
-        </tr>
-        <tr>
-          {/* {for loop} */}
-        </tr>
-      </table> 
+      <h3>MY ACTIVE ICOs</h3>
+      <div className='card'>
+        <div className='card-body'>
+          Active
+        </div>
+      </div>
     </div>
   );
 }

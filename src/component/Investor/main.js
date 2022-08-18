@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import axios from "axios"
+import InvestorHeader from '../Header/investorHeader'
 
 function InvestorMain() {
   const [activeIcos, setActiveIcos] = useState([])
@@ -11,10 +12,11 @@ function InvestorMain() {
   let listActiveIcos = activeIcos.map((active, i) => {
     return (
       <>
-        <div className="card card-ico-coin mx-auto" key={i} style={{ width: "70%" }}>
-          <div className='card-body' key={i}>
-            {active.status}
-          </div>
+      <InvestorHeader />
+        <div className="card card-ico-coin mx-auto" key={i} style={{width:"70%"}}>
+            <div className='card-body' key={i}>
+                  {active.status}
+            </div>
         </div>
         <br />
       </>

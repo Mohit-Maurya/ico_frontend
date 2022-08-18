@@ -106,6 +106,8 @@ const validateAadhaar = () => {
     return (
       <form>
         <h3>Sign Up</h3>
+        <center>
+
         <div className="card mx-auto" style={{width:"70%"}}>
           <div className='card-body mx-auto' style={{width:"70%"}}>
             <div>
@@ -230,6 +232,7 @@ const validateAadhaar = () => {
           Already registered <a href="/sign-in">sign in?</a>
         </p>
         </div>
+        </center>
         
       </form>
     )

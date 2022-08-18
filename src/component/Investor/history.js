@@ -1,10 +1,17 @@
 import React,{useState} from 'react'
 
 function InvestorHistory() {
-  
+
+
   return (
     <div>
-      Investor's profile is shown here
+      <center>
+        <div className='card'>
+          <div className='card-body'>
+            
+          </div>
+        </div>
+      </center>
     </div>
   )
 }
