@@ -2,14 +2,14 @@ import React from 'react';
 import '../common/form.css';
 import axios from "axios"
 import { useState } from 'react';
-import {useDispatch,useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
-import {log_in} from "../../features/user"
+import { log_in } from "../../features/user"
 
 function Login() {
   const [role, setRole] = useState("investor");
   const [login, setLogin] = useState({ email: "", password: "", error: "" });
-  const user = useSelector((state)=>state.user.value)
+  const user = useSelector((state) => state.user.value)
   const dispatch = useDispatch()
 
   let navigate = useNavigate();
@@ -21,12 +21,11 @@ function Login() {
       .post(`http://localhost:8080/${role}s/login`, login)
       .then((res) => {
         console.log(res.data.response)
-        if (res.data.response === "Authorized User")
-          {
-            console.log("login user: ",login.email)
-            dispatch(log_in({ userid: res.data.userid,loggedin:true,role:role}))
-            navigate(`/${role}/coinslist`);
-          }
+        if (res.data.response === "Authorized User") {
+          console.log("login user: ", login.email)
+          dispatch(log_in({ userid: res.data.userid, loggedin: true, role: role }))
+          navigate(`/${role}`);
+        }
         // if (res.data.response === "Authorized User") {
         // if (res.data === "Authorized User") {
         //   console.log("login user: ", login.email)
@@ -36,17 +35,15 @@ function Login() {
       .catch((err) => {
         // navigate('/login')
         if (err.response.data.response === "Unauthorised User")
-        setLogin((prevState) => ({
-          ...prevState,
-          error: "Invalid credentials",
-        }));
+          setLogin((prevState) => ({
+            ...prevState,
+            error: "Invalid credentials",
+          }));
         console.log(err);
         window.alert("Invalid credentials!")
       });
 
-
   };
-
 
   return (
 
@@ -54,7 +51,6 @@ function Login() {
       <form className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In as {role} </h3>
-
 
           {
             role === "investor" ?

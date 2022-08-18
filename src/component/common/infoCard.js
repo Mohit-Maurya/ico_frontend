@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function InfoCard({icoName, priceRange, icoStatus, coinDetailRoute}) {
     let navigate = useNavigate();
     const viewDetails = () => {
-        navigate(`/${coinDetailRoute}`);
+        navigate(`/login`);
     }
   return (
     <div>
