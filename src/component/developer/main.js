@@ -13,7 +13,7 @@ function DevMain() {
   
   console.log(user)
   useEffect(() => {
-    axios.get("http://localhost:8080/coin/"+user.userid)
+    axios.get("http://localhost:8080/coin/developer/"+user.userid)
       .then((res) => {
         setActiveIcos(res.data["Active"])
         setClosedIcos(res.data["Closed"])
