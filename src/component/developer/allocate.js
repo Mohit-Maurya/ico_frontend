@@ -12,14 +12,14 @@ function Allocate() {
     const { coinId, status } = state
     console.log(coinId)
     const allocate = () => {
-        axios.get("http://localhost:8080/coin/allocation/"+coinId)
-                .then((res)=>{
-                    console.log(res)
-                    window.alert(res.data)
-                    //  window.alert("You have successfully allocated your coins to your investors! TO THE MOOOONNNN!!!")
-                    //  navigate('/developer')
-                })
-                .catch((err)=>console.log(err))
+        axios.get("http://localhost:8080/coin/allocation/" + coinId)
+            .then((res) => {
+                console.log(res)
+                window.alert(res.data)
+                //  window.alert("You have successfully allocated your coins to your investors! TO THE MOOOONNNN!!!")
+                //  navigate('/developer')
+            })
+            .catch((err) => console.log(err))
     }
 
     useEffect(() => {
@@ -37,41 +37,37 @@ function Allocate() {
         <>
             <div className="card mx-auto mt-5">
                 <div className="card-body">
-                    <h3 className="float-start mb-5">{details.token_name}</h3>
-                    <div className="mt-5">
-                        {details.about}
-                    </div>
+                    <h3 className="card-title">{details.token_name}</h3>
+                    <br />
+                    <br />
                     <div className="row mt-2">
-                        <div className="col-3">
-                            <b>Platform </b>&nbsp; &nbsp; {details.platform}
+                        <div className="">
+                        <b>Coin description: </b>{details.about}
                         </div>
-                        <div className="col-3">
-                            <b>Category </b> &nbsp; &nbsp; {details.category}
+                        <div className="col-5 mt-4">
+                            <b>Platform: </b>&nbsp; &nbsp; {details.platform}
                         </div>
-                    </div>
-                    <div className="row mt-2">
-                        <div className="col-3">
-                            <b>Total Number of Token </b>&nbsp; &nbsp; {details.total_tokens_available}
+                        <div className="col-5 mt-4">
+                            <b>Category: </b> &nbsp; &nbsp; {details.category}
                         </div>
-                        <div className="col-3">
-                            <b>Minimum Token Quantity </b> &nbsp; &nbsp; {details.min_token_qty}
+
+                        <div className="col-5 mt-4">
+                            <b>Total Number of Token: </b>&nbsp; &nbsp; {details.total_tokens_available}
                         </div>
-                    </div>
-                    <div className="row mt-2">
-                        {/* <p>Price Range</p> */}
-                        <div className="col-3">
-                            <b>Minimum Price</b>&nbsp; &nbsp; ₹{price.min}
+                        <div className="col-5 mt-4">
+                            <b>Minimum Token Quantity: </b> &nbsp; &nbsp; {details.min_token_qty}
                         </div>
-                        <div className="col-3">
-                            <b>Maximum Price</b> &nbsp; &nbsp; ₹{price.max}
+                        <div className="col-5 mt-4">
+                            <b>Minimum Price:</b>&nbsp; &nbsp; ₹{price.min}
                         </div>
-                    </div>
-                    <div className="row mt-2">
-                        <div className="col-3">
-                            <b>Start Date </b> &nbsp; &nbsp; {new Date(details.ico_start_date).toLocaleString("lookup").split(",")[0]}
+                        <div className="col-5 mt-4">
+                            <b>Maximum Price:</b> &nbsp; &nbsp; ₹{price.max}
                         </div>
-                        <div className="col-3">
-                            <b>End Date </b> &nbsp; &nbsp; {new Date(details.ico_end_date).toLocaleString("lookup").split(",")[0]}
+                        <div className="col-5 mt-4">
+                            <b>Start Date: </b> &nbsp; &nbsp; {new Date(details.ico_start_date).toLocaleString("lookup").split(",")[0]}
+                        </div>
+                        <div className="col-5 mt-4">
+                            <b>End Date: </b> &nbsp; &nbsp; {new Date(details.ico_end_date).toLocaleString("lookup").split(",")[0]}
                         </div>
                     </div>
                 </div>

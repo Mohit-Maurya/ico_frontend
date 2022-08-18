@@ -102,22 +102,22 @@ function DevMain() {
   
   return (
     <div >
-      <h3>MY UPCOMING ICO:</h3>
-      <div className='card'>
+      <h3>MY UPCOMING ICOs</h3>
+      <div className='card border-dark mb-3'>
         <div className='card-body'  style={{ backgroundColor: "e9ecef", overflowY:"scroll" , height:"30vh"}}>
           {upcomingIcosList}
         </div>
       </div>
 
       <h3>MY ACTIVE ICOs</h3>
-      <div className='card'>
+      <div className='card border-dark mb-3'>
         <div className='card-body'  style={{ backgroundColor: "e9ecef", overflowY:"scroll" , height:"30vh"}}>
           {activeIcosList}
         </div>
       </div>
 
       <h3>MY CLOSED ICOs</h3>
-      <div className='card'>
+      <div className='card border-dark'>
         <div className='card-body'  style={{ backgroundColor: "e9ecef", overflowY:"scroll" , height:"30vh"}}>
           {closedIcosList}
         </div>
