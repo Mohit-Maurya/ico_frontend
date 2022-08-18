@@ -1,4 +1,5 @@
 import './App.css';
+import HomeCoinslist from './component/Home/HomeCoinList';
 import Login from './component/Login/login';
 import RegistrationDeveloper from './component/Registration/registrationDeveloper';
 import RegistrationInvestor from './component/Registration/registrationInvestor';
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
+        <Route path="/coinslisthome" element={<HomeCoinslist />} />
 
         <Route path="/investor/coinslist" element={<Coinslist />} />
         <Route path="/investor/main" element={<InvestorMain />} />
