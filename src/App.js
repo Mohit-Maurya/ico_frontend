@@ -17,6 +17,7 @@ import Header from "./component/Header/Header"
 import { Routes, Route } from "react-router-dom"
 import Home from './component/Home/home';
 import RegistrationOption from './component/Registration/registrationOption';
+import Footer from './component/Footer';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/developer/allocate" element={<Allocate />} />
 
       </Routes>
+      <Footer />
        
     </div>
   );

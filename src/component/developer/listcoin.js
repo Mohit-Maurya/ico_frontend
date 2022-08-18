@@ -4,8 +4,8 @@ import axios from "axios"
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
-function DevICO() {
 
+function DevICO() {
     const navigate = useNavigate();
     const [coinDetails, setCoinDetails] = useState({
         token_name: '', about: '', ico_start_date: '', ico_end_date: '',
@@ -183,6 +183,7 @@ function DevICO() {
             <br />
         </div>
     );
+
 }
 
 export default DevICO;

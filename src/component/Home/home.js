@@ -1,6 +1,5 @@
 import React from 'react';
 import InfoCard from '../common/infoCard';
-import Header from '../Header/Header';
 import Introduction from '../Introduction';
 
 function Home() {
