@@ -2,16 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import axios from "axios";
-import InvestorHeader from "../Header/investorHeader";
+
 
 function CoinDetail() {
     const [details, setDetails] = useState({})
     const user = useSelector((state) => state.user.value)
+    const [exists,setExists] = useState(false)
+    const [refresh,setRefresh] = useState(false)
     const [price, setPrice] = useState({ min: "", max: "" })
-    const [bid,setBid] = useState({token_qty:"",bidding_price:""})
+    const [bid,setBid] = useState({token_qty:"",bidding_price:"",bid_id:""})
     const [bidErr,setBidErr] = useState({token_qty:"",bidding_price:""})
     const { state } = useLocation()
-    const { coinId } = state
+    const { coinId,status } = state
     useEffect(() => {
         // console.log(state,coinId)
         axios.get("http://localhost:8080/coin/" + coinId)
@@ -25,9 +27,14 @@ function CoinDetail() {
         axios.get(`http://localhost:8080/get-bid-by-coin/${coinId}/${user.userid}`)
                     .then((res)=>{
                             console.log(res)
+                            if(res.data.msg==='Bid exists')
+                                {
+                                    setExists(true)
+                                    setBid({token_qty:res.data.data.token_qty,bidding_price:res.data.data.bidding_price,bid_id:res.data.data._id})
+                                }
                     })  
                     .catch((err)=>console.log(err))  
-    }, [])
+    }, [refresh])
 
     const changeTokenQuantity=(e)=>{
         e.preventDefault();
@@ -49,12 +56,25 @@ function CoinDetail() {
     const onClickSubscribe=(e)=>{
         e.preventDefault()
         console.log({coin_id:coinId,investor_id:user.userid,coin_name:details.token_name,status:"Active",token_qty:bid.token_qty,bidding_price:bid.bidding_price})
-        axios.post("http://localhost:8080/biddings",{coin_id:coinId,investor_id:user.userid,coin_name:details.token_name,status:"Active",token_qty:bid.token_qty,bidding_price:bid.bidding_price})
+        if(!exists)
+        {
+            axios.post("http://localhost:8080/biddings",{coin_id:coinId,investor_id:user.userid,coin_name:details.token_name,status:"Active",token_qty:bid.token_qty,bidding_price:bid.bidding_price})
                 .then((res)=>{
                     console.log(res)
                     alert("successfully subscribed")
                 })
                 .catch((err)=>console.log(err))
+        }
+       else
+       {
+            axios.post("http://localhost:8080/editBid/",{id:bid.bid_id,coin_id:coinId,investor_id:user.userid,coin_name:details.token_name,status:"Active",token_qty:bid.token_qty,bidding_price:bid.bidding_price})
+            .then((res)=>{
+                console.log(res)
+                alert("successfully updated the subscription")
+            })
+            .catch((err)=>console.log(err))
+          
+       } 
     }
 
     return (
@@ -100,9 +120,12 @@ function CoinDetail() {
                 </div>
             </div>
             <div >
-                <button type="button" className="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Subscribe!
-                </button>
+                {
+                    status==="Active" ?
+                    <button type="button" className="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Subscribe!
+                    </button> :<></>
+                }
 
             </div>
 
@@ -122,10 +145,10 @@ function CoinDetail() {
                             <label className="mb-3">Bidding Price &nbsp; &nbsp;</label>
                             <input id="bidding_price" defaultValue={bid.bidding_price} type="number" onChange={changeBiddingPrice}/>
                             <p><span style={{color:"red"}}>{bidErr.bidding_price}</span></p>
-                           
+                           {exists ? <p><span style={{color:"red"}}>Note:</span> Bid already exist any changes will update the existing bid</p>:<></>}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={(e)=>{e.preventDefault();}}>Cancel</button>
                             <button type="button" className="btn btn-primary" onClick={onClickSubscribe} data-bs-dismiss="modal">Subscribe</button>
 
                         </div>

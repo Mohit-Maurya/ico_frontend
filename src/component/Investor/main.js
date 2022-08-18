@@ -35,21 +35,32 @@ function InvestorMain() {
     )
   })
 
-  useEffect(() => {
+  function fetchActiveIcos(){
     axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Active`)
-      .then((res) => {
-        setActiveIcos([...res.data])
-        console.log("Active....",res.data, [...res.data])
-      })
-     .catch((err) => console.log(err))
+    .then((res) => {
+      setActiveIcos([...res.data])
+      console.log("Active....",res.data, [...res.data])
+    })
+   .catch((err) => console.log(err))
+  }
+
+  useEffect(() => {
+    // axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Active`)
+    //   .then((res) => {
+    //     setActiveIcos([...res.data])
+    //     console.log("Active....",res.data, [...res.data])
+    //   })
+    //  .catch((err) => console.log(err))
+    fetchActiveIcos()
     setInterval(function(){
       console.log("intervallll ----- ")
-      axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Active`)
-      .then((res) => {
-        setActiveIcos([...res.data])
-        console.log("Active....",res.data, [...res.data])
-      })
-     .catch((err) => console.log(err))
+      fetchActiveIcos()
+    //   axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Active`)
+    //   .then((res) => {
+    //     setActiveIcos([...res.data])
+    //     console.log("Active....",res.data, [...res.data])
+    //   })
+    //  .catch((err) => console.log(err))
     }
     ,300000)
     axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Accepted`)
