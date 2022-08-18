@@ -26,6 +26,31 @@ h3 {
   border-radius: 50px;
   outline: 1px solid green;
 }
+
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:active {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
 p {
   padding: 0 15px;
   color: var(--Grayish-Blue);
