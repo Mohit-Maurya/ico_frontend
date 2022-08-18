@@ -4,7 +4,7 @@ import Introduction from '../Introduction';
 
 function Home() {
   const cardStyles = {
-      padding: "40px",
+      padding: "100px",
       display: "flex",
       justifyContent: "center",
       flexDirection: "row",
