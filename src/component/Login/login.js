@@ -24,7 +24,10 @@ function Login() {
         if (res.data.response === "Authorized User") {
           console.log("login user: ", login.email)
           dispatch(log_in({ userid: res.data.userid, loggedin: true, role: role }))
-          navigate(`/${role}`);
+          if(role === "investor")
+             navigate(`/${role}/coinslist`);
+          else  
+            navigate(`/${role}`)
         }
         // if (res.data.response === "Authorized User") {
         // if (res.data === "Authorized User") {
