@@ -109,7 +109,7 @@ function RegistrationDeveloper() {
 
 
   const fileUpload = (e) => {
-    console.log(e.target.values[0])
+    console.log(e.target.files[0])
   }
 
   return (
@@ -234,7 +234,7 @@ function RegistrationDeveloper() {
             <div className="mb-3">
               <label>White Paper</label>
               <input
-                type="text"
+                type="file"
                 className="form-control"
                 id="white-paper"
                 onChange={fileUpload}
