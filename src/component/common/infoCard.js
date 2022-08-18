@@ -19,8 +19,7 @@ function InfoCard({icoName, Price, icoStatus, coinDetailRoute}) {
     <div className="card" style={{width: "18rem"}}>
     <div className="card-body">
       <h5 className="card-title">{icoName}</h5>
-      <h6 className="card-subtitle mb-2 text-muted">{Price}/per Token</h6>
-      Status:<span className="card-text" style={{color: setColor(icoStatus), fontWeight: 'bold'}}> {icoStatus}</span>
+      <h6 className="card-subtitle mb-2 text-muted">{Price} per order</h6>
       <button className="btn" onClick={viewDetails} >View Details</button>
     </div>
   </div>

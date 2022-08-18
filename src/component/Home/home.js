@@ -4,7 +4,7 @@ import Introduction from '../Introduction';
 
 function Home() {
   const cardStyles = {
-      padding: "100px",
+      padding: "40px",
       display: "flex",
       justifyContent: "center",
       flexDirection: "row",
@@ -16,10 +16,9 @@ function Home() {
       <Introduction />
       <h1 style={{marginTop: "100px", marginBottom: "20px"}} >Our Brokerages for ICOs</h1>
       <div className='inline-block' style={cardStyles}>
-        <InfoCard icoName='Polygon' Price='Rs 100' icoStatus='Active'/>
-        <InfoCard icoName='Samast' Price='Rs 90' icoStatus='Closed'/>
-        <InfoCard icoName='DeFi ICO' Price='Rs 30' icoStatus='Active'/>
-        <InfoCard icoName='Pro Gaming ICO' Price='Rs 40' icoStatus='Upcoming'/>
+        <InfoCard icoName='Blockchain' Price='$ 10'/>
+        <InfoCard icoName='De-fi' Price='$15'/>
+        <InfoCard icoName='Gaming' Price='$20'/>
       </div>
     </div>
   )
