@@ -86,8 +86,8 @@ function RegistrationDeveloper() {
   const onChangeAadhaar = (e) => {
     if (e.target.value.length != 12)
       setErr((prevState) => ({ ...prevState, aadhaar: "Aadhaar number should be of 12 digits" }))
-    else if (aadhaarErr)
-      setErr((prevState) => ({ ...prevState, aadhaar: "Aadhaar number should only have numeric characters" }))
+    // else if (aadhaarErr)
+    //   setErr((prevState) => ({ ...prevState, aadhaar: "Aadhaar number should only have numeric characters" }))
     else {
       setErr((prevState) => ({ ...prevState, aadhaar: "" }))
       console.log(e.target.value)
@@ -114,7 +114,7 @@ function RegistrationDeveloper() {
 
   return (
     <form>
-      <h3>Sign Up</h3>
+      <h3>Sign Up as Developer</h3>
       <center>
 
         <div className="card mx-auto" style={{ width: "70%" }}>
