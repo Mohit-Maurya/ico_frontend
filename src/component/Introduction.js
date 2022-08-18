@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import intoImg from './images/image-mockups.png'
 
 export default function Introduction() {
     let navigate = useNavigate();
@@ -16,7 +16,9 @@ export default function Introduction() {
                         for listing, investing and bidding in the coins.</p>
                     <button className='btn' onClick={HandleButton} > Register with us!</button>
                 </div>
-               
+                <div className='intro-hero'>
+                <img src={intoImg} alt='ico-logo ' />
+            </div>
             </div>
         </>
     )

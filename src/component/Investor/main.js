@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import axios from "axios"
-import InvestorHeader from '../Header/investorHeader'
 
 function InvestorMain() {
   const [activeIcos, setActiveIcos] = useState([])
@@ -13,9 +12,12 @@ function InvestorMain() {
     return (
       <>
         <div className="card card-ico-coin mx-auto" key={i} style={{width:"70%"}}>
-            <div className='card-body' key={i}>
-                  {active.status}
-            </div>
+        <div className='card-body' key={i}>
+        <div style={{fontWeight: "bold"}}>{active.coin_name}</div>
+        <div>Bidding Price: {active.bidding_price}</div>
+        <div>Min Token Quantity: {active.token_qty}</div>
+        <div>Status: <span style={{color: "blueviolet", marginBottom: "0px", fontWeight: "bold"}} >{active.status}</span></div>
+      </div>
         </div>
         <br />
       </>
@@ -27,8 +29,13 @@ function InvestorMain() {
       <>
         <div className="card card-ico-coin mx-auto" key={i} style={{ width: "70%" }}>
           <div className='card-body' key={i}>
-            {invest.status}
-          </div>
+            <div style={{fontWeight: "bold"}}>{invest.coin_name}</div>
+            <div className="container" style={{float: "left"}}>
+              <div >Bidding Price: {invest.bidding_price}</div>
+              <div>Min Token Quantity: {invest.token_qty}</div>
+              <div>Status: <span style={{color: 'green', marginBottom: "0px", fontWeight: "bold"}} >{invest.status}</span></div>
+            </div>
+            </div>
         </div>
         <br />
       </>
@@ -62,7 +69,7 @@ function InvestorMain() {
     //   })
     //  .catch((err) => console.log(err))
     }
-    ,300000)
+    ,3000)
     axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Accepted`)
       .then((res) => {
         setInvestedIcos([...res.data])
