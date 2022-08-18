@@ -45,6 +45,17 @@ function CoinDetail() {
         setBid((prevState)=>({...prevState,bidding_price:parseInt(e.target.value)}))
     }
 
+    const onSubscribe=(e)=>{
+        e.preventDefault()
+        console.log({coin_id:coinId,investor_id:user.userid,coin_name:details.token_name,status:"Active",token_qty:bid.token_qty,bidding_price:bid.bidding_price})
+        axios.post("http://localhost:8080/biddings",{coin_id:coinId,investor_id:user.userid,coin_name:details.token_name,status:"Active",token_qty:bid.token_qty,bidding_price:bid.bidding_price})
+                .then((res)=>{
+                    console.log(res)
+                    alert("successfully subscribed")
+                })
+                .catch((err)=>console.log(err))
+    }
+
     return (
         <div className="card mx-auto mt-5">
             <div className="card-body">
@@ -113,7 +124,7 @@ function CoinDetail() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
+                            <button type="button" className="btn btn-primary" onClick={onSubscribe}>Save changes</button>
                         </div>
                     </div>
                 </div>
