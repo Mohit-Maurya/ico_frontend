@@ -53,7 +53,9 @@ function Header() {
                 <li><a href='/'>Home</a></li>
                 <li><a href='/coinslist'>All Coins</a></li>
               </ul> */}
-              <button className='btn' onClick={HandleButton} > Sign In </button>
+              <div className='container'>
+                 <button className='btn float-end' onClick={HandleButton} > Sign In </button>
+              </div>
             </nav>
           </div> : <>
             {
