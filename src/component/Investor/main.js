@@ -44,7 +44,7 @@ function InvestorMain() {
         console.log("Active....",res.data, [...res.data])
       })
      .catch((err) => console.log(err))
-    },300000)
+    },300)
     axios.get(`http://localhost:8080/bids-per-status/${user.userid}/Accepted`)
       .then((res) => {
         setInvestedIcos([...res.data])
