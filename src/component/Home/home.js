@@ -12,8 +12,8 @@ function Home() {
   }
   return (
     <div>
-      {/* <Header /> */}
       <Introduction />
+      <h1 style={{marginTop: "100px", marginBottom: "20px"}} >Our Brokerage for ICOs</h1>
       <div className='inline-block' style={cardStyles}>
         <InfoCard icoName='DeFi ICO' priceRange='Rs 30-40' icoStatus='Active'/>
         <InfoCard icoName='My Gaming ICO' priceRange='Rs 90-120' icoStatus='Closed'/>
