@@ -25,7 +25,7 @@ function Login() {
           {
             console.log("login user: ",login.email)
             dispatch(log_in({ userid: res.data.userid,loggedin:true,role:role}))
-            navigate(`/${role}`);
+            navigate(`/${role}/coinslist`);
           }
         // if (res.data.response === "Authorized User") {
         // if (res.data === "Authorized User") {

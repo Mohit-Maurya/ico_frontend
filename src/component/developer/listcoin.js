@@ -17,11 +17,12 @@ function DevICO() {
     const [err, setErr] = useState({price:'', date:''})
 
     const onSubmit = (e) => {
-        console.log("submit", coinDetails)
+        console.log("submit", coinDetails,priceRange)
         e.preventDefault()
-        axios.post("http://localhost:8080/developers", {  ...coinDetails , price_range:{...priceRange}})
+        axios.post("http://localhost:8080/coins", {  ...coinDetails , price_range:{...priceRange}})
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
+        window.alert("You have successfully listed an ICO!")
         navigate('/developer')
     }
     const onChangePrice = (e,type) => {

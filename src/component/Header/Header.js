@@ -47,13 +47,15 @@ function Header() {
       {
         !user.role ?
           <div className='header'>
-            <img className='logo-head' src={logoImg} alt="logo" />
+            <a href='/'><img className='logo-head' src={logoImg} alt="logo" /></a>
             <nav style={navClose}>
-              <ul className='flex'>
-                <li>Home</li>
-                <li>All Coins</li>
-              </ul>
-              <button className='btn' onClick={HandleButton} > Sign In </button>
+              {/* <ul className='flex'>
+                <li><a href='/'>Home</a></li>
+                <li><a href='/coinslist'>All Coins</a></li>
+              </ul> */}
+              <div className='container'>
+                 <button className='btn float-end' onClick={HandleButton} > Sign In </button>
+              </div>
             </nav>
           </div> : <>
             {
