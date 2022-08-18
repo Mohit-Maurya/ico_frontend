@@ -2,15 +2,17 @@ import React from 'react';
 import '../common/form.css';
 import axios from "axios"
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 
 
 function DevICO() {
+    const user = useSelector((state)=>state.user.value)
     const navigate = useNavigate();
     const [coinDetails, setCoinDetails] = useState({
         token_name: '', about: '', ico_start_date: '', ico_end_date: '',
         total_tokens_available: '',  platform: '', category: '', min_token_qty: '',
-        status: 'Active', whitepaper: '', dev_id: '62fbba9e2df5a047a1a961b1'
+        status: 'Active', whitepaper: ''
     })
     const [dateRange,setdateRange ] = useState({start:null, end:null})
     const [priceRange,setPriceRange ]   = useState({min:null,max:null})
@@ -28,7 +30,7 @@ function DevICO() {
     const onSubmit = (e) => {
         console.log("submit", coinDetails,priceRange)
         e.preventDefault()
-        axios.post("http://localhost:8080/coins", {  ...coinDetails , price_range:{...priceRange}})
+        axios.post("http://localhost:8080/coins", {  ...coinDetails , price_range:{...priceRange},dev_id:user.userid})
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
             if(checkFields())

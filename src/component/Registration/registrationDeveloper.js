@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import './registrationDeveloper.css'
-import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
+import {useNavigate} from "react-router-dom" 
 
 function RegistrationDeveloper() {
   const validPassword = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');
   const validPhoneNumber = new RegExp('^(?=.*\d)\[0-9\d]{10}$');
   const validAadhaar = new RegExp('^(?=.*\d)[\d]{12}$');
-
+  let navigate = useNavigate()
   const [password, setPassword] = useState('');
   const [passErr, setpassErr] = useState(false);
   const [phone_number, setPhoneNumber] = useState('');
@@ -74,12 +74,17 @@ function RegistrationDeveloper() {
     console.log("submit", developerDetails, bank)
     e.preventDefault()
     axios.post("http://localhost:8080/developers", { developerDetails: { ...developerDetails }, bank: { ...bank } })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err))
-      if(checkFields())
+      .then((res) => {
+        console.log(res)
+        navigate("/")
         window.alert("You have successfully registered as a developer!")
-      else
-        window.alert("Please fill all the fields listed in the form")
+      }
+    )
+      .catch((err) => console.log(err))
+      // if(checkFields())
+      //   window.alert("You have successfully registered as a developer!")
+      // else
+      //   window.alert("Please fill all the fields listed in the form")
 
   }
   
