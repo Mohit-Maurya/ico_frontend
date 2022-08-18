@@ -74,7 +74,7 @@ function RegistrationInvestor() {
 
     return (
       <form>
-        <h3>Sign Up</h3>
+        <h3>Sign Up as Investor</h3>
         <div className="card mx-auto" style={{width:"70%"}}>
          <div className='card-body mx-auto' style={{width:"70%"}}>
           <div>
