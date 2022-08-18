@@ -74,7 +74,8 @@ function DevICO() {
                                 id="coinname"
                                 name="coinname"
                                 placeholder='Name'
-                                onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, token_name: e.target.value }))} />
+                                onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, token_name: e.target.value }))}
+                                required />
                         </div>
                         <br />
                         <div className="form-group mt-3">
