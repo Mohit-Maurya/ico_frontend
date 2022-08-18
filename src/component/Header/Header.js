@@ -61,11 +61,11 @@ function Header() {
             {
               user.role === "investor" ?
                 <div className='header'>
-                  <a href='/investor/coinslist'><img className='logo-head' src={logoImg} alt="logo" /></a>
+                  <a href='/investor'><img className='logo-head' src={logoImg} alt="logo" /></a>
                   <nav style={navClose}>
                     <ul className='flex'>
                       <li><a href='/investor/coinslist'>Coins List</a></li>
-                      <li><a href='/investor/history'>My Transactions</a></li>
+                      <li><a href='/investor/history'>My History</a></li>
                       <li><a href='/investor/profile'>My Profile</a></li>
                     </ul>
                     <button className='btn btn-danger' onClick={SignOut} > Sign Out </button>

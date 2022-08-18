@@ -68,26 +68,26 @@ function RegistrationDeveloper() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
   }
-  const onChangePhoneNumber = async (e) => {
-    // console.log(e.target.value.length)
-
-    if (e.target.value.length !== 10)
-      setErr((prevState) => ({ ...prevState, phone_number: "Phone number should be of 10 digits" }))
-    else if (!validPhoneNumber.test(e.target.value)) {
-      //console.log((/^[0-9]*/.test(e.target.value)))
-      //console.log(typeof JSON.stringify(validPhoneNumber))
-      setErr((prevState) => ({ ...prevState, phone_number: "Phone number should only have numeric characters" }))
-    }
-    else {
-      setErr((prevState) => ({ ...prevState, phone_number: "" }))
-      console.log(e.target.value)
+  
+    const onChangePhoneNumber =async (e)=> {
+      // console.log(e.target.value.length)
+      
+      if(e.target.value.length !==10 )
+        setErr((prevState)=>({...prevState, phone_number:"Phone number should be of 10 digits"}))
+      //else if( !validPhoneNumber.test(e.target.value)){ 
+        //console.log((/^[0-9]*/.test(e.target.value)))
+        //console.log(typeof JSON.stringify(validPhoneNumber))
+        //setErr((prevState)=>({...prevState, phone_number:"Phone number should only have numeric characters"}))}
+      else{
+        setErr((prevState)=>({...prevState,phone_number:""}))
+        console.log(e.target.value)
     }
   }
   const onChangeAadhaar = (e) => {
     if (e.target.value.length != 12)
       setErr((prevState) => ({ ...prevState, aadhaar: "Aadhaar number should be of 12 digits" }))
-    else if (aadhaarErr)
-      setErr((prevState) => ({ ...prevState, aadhaar: "Aadhaar number should only have numeric characters" }))
+    // else if (aadhaarErr)
+    //   setErr((prevState) => ({ ...prevState, aadhaar: "Aadhaar number should only have numeric characters" }))
     else {
       setErr((prevState) => ({ ...prevState, aadhaar: "" }))
       console.log(e.target.value)
@@ -114,7 +114,7 @@ function RegistrationDeveloper() {
 
   return (
     <form>
-      <h3>Sign Up</h3>
+      <h3>Sign Up as Developer</h3>
       <center>
 
         <div className="card mx-auto" style={{ width: "70%" }}>
