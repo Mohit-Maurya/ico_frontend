@@ -28,6 +28,15 @@ function RegistrationInvestor() {
     const [bank,setBank ]   = useState({bank_acc_num:'',ifsc:'',acc_holder_name:''})    
 
     const [err, setErr] = useState({phone_number:"",aadhaar:"",pan:""})
+
+    const checkFields = () => {
+        if(investorDetails.name!==''&& investorDetails.pan!==''&& investorDetails.email!==''&& investorDetails.password!=='' && 
+        investorDetails.aadhaar!=='' && investorDetails.phone_number!=='' &&
+        bank.bank_acc_num!=='' && bank.ifsc!=='' && bank.acc_holder_name!=='')
+          return true
+        else
+          return false
+      }
   
     
     const onSignUp =(e)=>{
@@ -39,6 +48,11 @@ function RegistrationInvestor() {
                           navigate("/")
                         })
                         .catch((err)=>console.log(err))
+        if(checkFields())
+            window.alert("You have successfully registered as a developer!")
+        else
+            window.alert("Please fill all the fields listed in the form")
+                
 
     }
     const onChangePhoneNumber =(e)=>{
@@ -61,7 +75,7 @@ function RegistrationInvestor() {
   
     const onChangePan =(e)=>{
       if(e.target.value.length !=9 )
-      setErr((prevState)=>({...prevState, pan:"PAN number should be of 9 digits"}))
+      setErr((prevState)=>({...prevState, pan:"PAN number should be of 9 characters"}))
       else{
       setErr((prevState)=>({...prevState, pan:""}))
       console.log(e.target.value)
@@ -75,8 +89,8 @@ function RegistrationInvestor() {
     return (
       <form>
         <h3>Sign Up as Investor</h3>
-        <div className="card mx-auto" style={{width:"70%"}}>
-         <div className='card-body mx-auto' style={{width:"70%"}}>
+        <div className="card mx-auto" style={{width:"50%"}}>
+         <div className='card-body mx-auto' style={{width:"50%"}}>
           <div>
           <label> Name</label>
           <input
@@ -84,12 +98,14 @@ function RegistrationInvestor() {
             className="form-control"
             id="name"
             onChange={(e)=>setInvestorDetails((prevState) => ({ ...prevState, name: e.target.value }))}
+            required
         />
         </div>
         <div className="mb-1">
           <label>Email</label>
           <input type="email" className="form-control" id="email" 
           onChange={(e)=>setInvestorDetails((prevState) => ({ ...prevState, email: e.target.value }))}
+          required
         />  
         </div>
         <div className="mb-1">
@@ -99,6 +115,7 @@ function RegistrationInvestor() {
             className="form-control"
             id="phone_number"
             onChange={(e)=>{setInvestorDetails((prevState) => ({ ...prevState, phone_number: e.target.value }));onChangePhoneNumber(e)}}
+            required
 
           />
             <p><span style={{ color: 'red' }}>{err.phone_number}</span></p>
@@ -111,6 +128,7 @@ function RegistrationInvestor() {
             className="form-control"
             id="pan"
             onChange={(e)=>{setInvestorDetails((prevState) => ({ ...prevState, pan: e.target.value }));onChangePan(e)}}
+            required
 
           />
             <p><span style={{ color: 'red' }}>{err.pan}</span></p>
@@ -123,6 +141,7 @@ function RegistrationInvestor() {
             className="form-control"
             id="aadhaar"
             onChange={(e)=>{setInvestorDetails((prevState) => ({ ...prevState, aadhaar: e.target.value }));onChangeAadhaar(e)}}
+            required
 
           />
             <p><span style={{ color: 'red' }}>{err.aadhaar}</span></p>
@@ -135,6 +154,7 @@ function RegistrationInvestor() {
             className="form-control"
             id="password"
             onChange={(e)=>{setInvestorDetails((prevState) => ({ ...prevState, password: e.target.value }));setPassword(e.target.value)}}
+            required
 
           />
         </div>
@@ -145,6 +165,7 @@ function RegistrationInvestor() {
             className={cPasswordClass}
             id="confirm_password"
             onChange={handleCPassword}
+            required
           />
         </div>
         {showErrorMessage && isCPasswordDirty ? <p><span style={{ color: 'red' }}>Enter password before confirm password</span></p>: ''}
@@ -157,6 +178,7 @@ function RegistrationInvestor() {
             className="form-control"
             id="bank_acc_num"
             onChange={(e)=>setBank((prevState) => ({ ...prevState, bank_acc_num: e.target.value }))}
+            required
 
           />
         </div>
@@ -167,6 +189,7 @@ function RegistrationInvestor() {
             className="form-control"
             id="ifsc"
             onChange={(e)=>setBank((prevState) => ({ ...prevState, ifsc: e.target.value }))}
+            required
 
           />
         </div>
@@ -177,9 +200,13 @@ function RegistrationInvestor() {
             className="form-control"
             id="acc_holder_name"
             onChange={(e)=>setBank((prevState) => ({ ...prevState, acc_holder_name: e.target.value }))}
+            required
 
           />
         </div>
+        <br />
+        <p style={{color: 'red'}}> All fields are mandatory to fill</p>
+
         </div>
 
         <div className="container">

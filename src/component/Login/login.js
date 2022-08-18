@@ -46,7 +46,7 @@ function Login() {
   };
 
   return (
-
+    <div className='container' style={{position: "relative", top: "-120px", right: "100px", bottom: "-50px"}}>
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">
@@ -90,6 +90,7 @@ function Login() {
           </div>
         </div>
       </form>
+    </div>
     </div>
   )
 }

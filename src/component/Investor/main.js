@@ -93,10 +93,10 @@ function InvestorMain() {
       </div>
       <div className='col-6'>
         <div className='card mx-auto' style={{height:"85vh"}}>
-          <div className='card-header' style={{ backgroundColor: "e9ecef", overflowY:"scroll" }}>
+          <div className='card-header'>
             Invested ICOs
           </div>
-          <div className='card-body'>
+          <div className='card-body' style={{ backgroundColor: "e9ecef", overflowY:"scroll" }}>
             {listInvestedIcos}
           </div>
         </div>

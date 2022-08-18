@@ -9,27 +9,32 @@ function Allocate() {
     const [details, setDetails] = useState({})
     const [price, setPrice] = useState({ min: "", max: "" })
     const { state } = useLocation()
-    const { coinId } = state
-    
+    const { coinId, status } = state
+    console.log(coinId)
     const allocate = () => {
-        navigate('/developer')
-        window.alert("You have successfully allocated your coins to your investors! TO THE MOOOONNNN!!!")
+        axios.get("http://localhost:8080/coin/allocation/"+coinId)
+                .then((res)=>{
+                    console.log(res)
+                    window.alert(res.data)
+                    //  window.alert("You have successfully allocated your coins to your investors! TO THE MOOOONNNN!!!")
+                    //  navigate('/developer')
+                })
+                .catch((err)=>console.log(err))
     }
-    
+
     useEffect(() => {
         // console.log(state,coinId)
-        axios.get("http://localhost:8080/coin/" + coinId)
+        axios.get("http://localhost:8080/coins/" + coinId)
             .then((res) => {
+                console.log("use effect ")
                 setDetails({ ...res.data })
                 setPrice({ ...res.data.price_range })
-                // console.log(res.data)
+                console.log(res.data)
             })
             .catch((err) => console.log(err))
     }, [])
     return (
         <>
-
-            <h1>HI</h1>
             <div className="card mx-auto mt-5">
                 <div className="card-body">
                     <h3 className="float-start mb-5">{details.token_name}</h3>
@@ -71,9 +76,12 @@ function Allocate() {
                     </div>
                 </div>
                 <div >
-                    <button type="button" className="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        ALLOCATE
-                    </button>
+                    {
+                        status === "Active" ?
+                            <button type="button" className="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                ALLOCATE
+                            </button> : <></>
+                    }
 
                 </div>
 
@@ -90,7 +98,7 @@ function Allocate() {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={allocate}>Yes!</button>
-                                <button type="button" className="btn btn-primary">No:(</button>
+                                <button type="button" className="btn btn-primary" data-bs-dismiss="modal">No:(</button>
                             </div>
                         </div>
                     </div>
