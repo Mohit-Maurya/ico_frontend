@@ -16,14 +16,30 @@ function DevICO() {
     const [priceRange,setPriceRange ]   = useState({min:null,max:null})
     const [err, setErr] = useState({price:'', date:''})
 
+    const checkFields = () => {
+        if(coinDetails.token_name!==''&& coinDetails.about!==''&& coinDetails.ico_start_date!==''&& coinDetails.ico_end_date!=='' && 
+        coinDetails.total_tokens_available!=='' && coinDetails.platform!=='' && coinDetails.category!=='' && coinDetails.min_token_qty!=='' &&
+        coinDetails.whitepaper!=='' && priceRange.min!=='' && priceRange.max!=='')
+          return true
+        else
+          return false
+      }
+
     const onSubmit = (e) => {
         console.log("submit", coinDetails,priceRange)
         e.preventDefault()
         axios.post("http://localhost:8080/coins", {  ...coinDetails , price_range:{...priceRange}})
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
-        window.alert("You have successfully listed an ICO!")
-        navigate('/developer')
+            if(checkFields())
+            {
+                window.alert("You have successfully listed an ICO!")
+                navigate('/developer')
+            }
+            else
+                window.alert("Please fill all the fields before submitting!")
+
+        
     }
     const onChangePrice = (e,type) => {
         if(type === "min" && priceRange.max!=null && e.target.value >= priceRange.max){
@@ -81,7 +97,7 @@ function DevICO() {
                         <br />
                         <div className="form-group mt-3">
                             <label for="platform">Platform of coin</label><br/>
-                            <select class="form-control mt-1" onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, platform: e.target.value }))}>
+                            <select class="form-control mt-1" onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, platform: e.target.value }))} required>
                                 <option value="value" selected hidden>Click to select</option>
                                 <option>BTC</option>
                                 <option>ETH</option>
@@ -91,7 +107,7 @@ function DevICO() {
                         <br />
                         <div className="form-group mt-3">
                             <label for="category">Category of coin</label>
-                            <select class="form-control mt-1" onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, category: e.target.value }))}>
+                            <select class="form-control mt-1" onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, category: e.target.value }))} required>
                                 <option value="value" selected hidden>Click to select</option>
                                 <option>Blockchain</option>
                                 <option>De-fi</option>
@@ -108,6 +124,7 @@ function DevICO() {
                                 name="aboutcoin"
                                 placeholder="About"
                                 onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState, about: e.target.value })) }}
+                                required
                             />
                         </div>
                         <br />
@@ -120,7 +137,9 @@ function DevICO() {
                                 id="startdate"
                                 name="startdate"
                                 placeholder=""
-                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState, ico_start_date: e.target.value })); setdateRange((prevState) => ({ ...prevState, start: e.target.value})); onChangeDate(e,"start") }} />
+                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState, ico_start_date: e.target.value })); setdateRange((prevState) => ({ ...prevState, start: e.target.value})); onChangeDate(e,"start") }} 
+                                required
+                            />
                         </div>
                         <br />
 
@@ -132,7 +151,9 @@ function DevICO() {
                                 id="enddate"
                                 name="enddate"
                                 placeholder="" 
-                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState, ico_end_date: e.target.value })); setdateRange((prevState) => ({ ...prevState, end: e.target.value})); onChangeDate(e,"end") }} />
+                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState, ico_end_date: e.target.value })); setdateRange((prevState) => ({ ...prevState, end: e.target.value})); onChangeDate(e,"end") }} 
+                                required
+                            />
                         </div>
                             <p><span style={{ color: 'red' }}>{err.date}</span></p>
                         <br />
@@ -144,7 +165,9 @@ function DevICO() {
                                 type="number" id="token_avail"
                                 name="token_avail"
                                 onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState,  total_tokens_available: e.target.value}))}}
-                                placeholder="Tokens available" />
+                                placeholder="Tokens available" 
+                                required
+                            />
                         </div>
                         <br />
                         <div className="form-group mt-3">
@@ -154,7 +177,9 @@ function DevICO() {
                                 type="number" id="minprice"
                                 name="minprice"
                                 onChange={(e) => { setPriceRange((prevState) => ({ ...prevState,  min: e.target.value})); onChangePrice(e, "min")}}
-                                placeholder="Minimum price" />
+                                placeholder="Minimum price" 
+                                required
+                            />
                         </div>
                         <br />
                         <div className="form-group mt-3">
@@ -163,7 +188,9 @@ function DevICO() {
                                 className="form-control mt-1"
                                 type="number" id="maxprice"
                                 name="maxprice" placeholder="Maximum price"
-                                onChange={(e) => { setPriceRange((prevState) => ({ ...prevState,  max: e.target.value})); onChangePrice(e, "max") }} />
+                                onChange={(e) => { setPriceRange((prevState) => ({ ...prevState,  max: e.target.value})); onChangePrice(e, "max") }} 
+                                required
+                            />
                         </div>
                             <p><span style={{ color: 'red'}}>{err.price}</span></p>
                         <br />
@@ -173,7 +200,9 @@ function DevICO() {
                                 className="form-control mt-1"
                                 type="number" id="min_token_quantity"
                                 name="min_token_quantity" placeholder="Minimum token quantity"
-                                onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, min_token_qty: e.target.value }))} />
+                                onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, min_token_qty: e.target.value }))} 
+                                required
+                            />
                         </div>
                         <br />
                         <div className="form-group mt-3">
@@ -182,9 +211,12 @@ function DevICO() {
                                 className="form-control mt-1"
                                 type="" id="whitepaper"
                                 name="whitepaper"
-                                onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, whitepaper: e.target.value }))} />
+                                onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, whitepaper: e.target.value }))} 
+                                required
+                            />
                         </div>
                         <br />
+                        <p style={{color: 'red'}}> All fields are mandatory to fill</p>
                         <br />
                     </div>
                     <div className="d-grid gap-2 mt-3">
