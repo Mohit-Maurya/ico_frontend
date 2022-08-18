@@ -31,7 +31,12 @@ function Profile() {
       <>
         <div className="card card-ico-coin mx-auto" key={i} style={{ width: "70%" }}>
           <div className='card-body' key={i}>
-            {invest.status}
+            <div style={{ fontWeight: "bold" }}>{invest.coin_name}</div>
+            <div className="container" style={{ float: "left" }}>
+              <div >Bidding Price: {invest.bidding_price}</div>
+              <div>Min Token Quantity: {invest.token_qty}</div>
+              <div>Status: <span style={{ color: 'green', marginBottom: "0px", fontWeight: "bold" }} >{invest.status}</span></div>
+            </div>
           </div>
         </div>
         <br />
