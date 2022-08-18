@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './coinList.css'
-import InvestorHeader from '../Header/investorHeader';
+
 
 function Coinslist() {
 

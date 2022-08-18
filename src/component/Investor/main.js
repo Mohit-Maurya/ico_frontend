@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import axios from "axios"
-import InvestorHeader from '../Header/investorHeader'
+
 
 function InvestorMain() {
   const [activeIcos, setActiveIcos] = useState([])
