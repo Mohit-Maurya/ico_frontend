@@ -12,7 +12,7 @@ function DevICO() {
         total_tokens_available: '',  platform: '', category: '', min_token_qty: '',
         status: 'Active', whitepaper: '', dev_id: '62fbba9e2df5a047a1a961b1'
     })
-
+    const [dateRange,setdateRange ] = useState({start:null, end:null})
     const [priceRange,setPriceRange ]   = useState({min:null,max:null})
     const [err, setErr] = useState({price:'', date:''})
 
@@ -36,12 +36,27 @@ function DevICO() {
             console.log(e.target.value)
         }
     }
-    const onChangeDate = (e) => {
-        if (e.target.value <= coinDetails.ico_start_date)
-            setErr((prevState) => ({ ...prevState, date: "Start date must be before than end date" }))
-        else {
+    const onChangeDate = (e,type) => {
+
+        let temp1 = new Date(e.target.value)
+        let temp2 = new Date(coinDetails.ico_start_date)
+        console.log("Date 1 ",temp1)
+        console.log("Date 2", temp2)
+        console.log(temp1.getTime())
+        // console.log(typeof temp)
+        if(type == 'end' && coinDetails.ico_start_date!=null && temp1.getTime()>=temp2.getTime())
+        {
+            // console.log(temp1.getTime())
             setErr((prevState) => ({ ...prevState, date: "" }))
             console.log(e.target.value)
+        }
+        else if(type == 'start' && coinDetails.ico_end_date == null)
+        {
+            setErr((prevState) => ({ ...prevState, date: "Enter ICO end date" }))
+        }
+        else if(type == 'end' && coinDetails.ico_start_date!=null && temp1.getTime()<=temp2.getTime())
+        {
+            setErr((prevState) => ({ ...prevState, date: "ICO Start date must be before than ICO end date" }))
         }
     }
 
@@ -60,7 +75,8 @@ function DevICO() {
                                 id="coinname"
                                 name="coinname"
                                 placeholder='Name'
-                                onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, token_name: e.target.value }))} />
+                                onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, token_name: e.target.value }))}
+                                required />
                         </div>
                         <br />
                         <div className="form-group mt-3">
@@ -104,7 +120,7 @@ function DevICO() {
                                 id="startdate"
                                 name="startdate"
                                 placeholder=""
-                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState, ico_start_date: e.target.value })) }} />
+                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState, ico_start_date: e.target.value })); setdateRange((prevState) => ({ ...prevState, start: e.target.value})); onChangeDate(e,"start") }} />
                         </div>
                         <br />
 
@@ -115,9 +131,10 @@ function DevICO() {
                                 className="form-control mt-1"
                                 id="enddate"
                                 name="enddate"
-                                placeholder="" onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState, ico_end_date: e.target.value })); onChangeDate(e) }} />
+                                placeholder="" 
+                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState, ico_end_date: e.target.value })); setdateRange((prevState) => ({ ...prevState, end: e.target.value})); onChangeDate(e,"end") }} />
                         </div>
-                        <p><span style={{ color: 'red' }}>{err.aadhaar}</span></p>
+                            <p><span style={{ color: 'red' }}>{err.date}</span></p>
                         <br />
 
                         <div className="form-group mt-3">
@@ -126,7 +143,7 @@ function DevICO() {
                                 className="form-control mt-1"
                                 type="number" id="token_avail"
                                 name="token_avail"
-                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState,  total_tokens_available: e.target.value})); onChangePrice(e)}}
+                                onChange={(e) => { setCoinDetails((prevState) => ({ ...prevState,  total_tokens_available: e.target.value}))}}
                                 placeholder="Tokens available" />
                         </div>
                         <br />
@@ -148,7 +165,7 @@ function DevICO() {
                                 name="maxprice" placeholder="Maximum price"
                                 onChange={(e) => { setPriceRange((prevState) => ({ ...prevState,  max: e.target.value})); onChangePrice(e, "max") }} />
                         </div>
-                        <p><span style={{ color: 'red'}}>{err.price}</span></p>
+                            <p><span style={{ color: 'red'}}>{err.price}</span></p>
                         <br />
                         <div className="form-group mt-3">
                             <label for="min_token_quantity">Minimum token qunatity of an ICO lot</label>
@@ -164,7 +181,7 @@ function DevICO() {
                             <input
                                 className="form-control mt-1"
                                 type="" id="whitepaper"
-                                name="whitepaper" placeholder=""
+                                name="whitepaper"
                                 onChange={(e) => setCoinDetails((prevState) => ({ ...prevState, whitepaper: e.target.value }))} />
                         </div>
                         <br />

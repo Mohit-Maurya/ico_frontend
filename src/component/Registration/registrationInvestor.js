@@ -191,7 +191,6 @@ function RegistrationInvestor() {
           Already registered <a href="/sign-in">sign in?</a>
         </p>
     </div>
-    
       </form>
     )
   }
