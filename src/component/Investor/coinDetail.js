@@ -15,12 +15,12 @@ function CoinDetail() {
     const { state } = useLocation()
     const { coinId,status } = state
     useEffect(() => {
-        // console.log(state,coinId)
-        axios.get("http://localhost:8080/coin/" + coinId)
+        console.log(state,coinId)
+        axios.get("http://localhost:8080/coins/" + coinId)
             .then((res) => {
                 setDetails({ ...res.data })
                 setPrice({ ...res.data.price_range })
-                // console.log(res.data)
+                console.log(res.data)
             })
             .catch((err) => console.log(err))
 
