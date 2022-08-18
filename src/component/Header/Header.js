@@ -64,6 +64,7 @@ function Header() {
                   <a href='/investor'><img className='logo-head' src={logoImg} alt="logo" /></a>
                   <nav style={navClose}>
                     <ul className='flex'>
+                      <li><a href='/investor'>Home</a></li>
                       <li><a href='/investor/coinslist'>Coins List</a></li>
                       <li><a href='/investor/history'>My History</a></li>
                       <li><a href='/investor/profile'>My Profile</a></li>
