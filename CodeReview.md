@@ -14,3 +14,7 @@
 - main.js: abstract out 'list' components
 - allocate.js: if allocate API fails, do more than simply console.logging the error. Display the error to the user in a proper format.
   - Ideally make this API async
+
+
+Overall: 
+  - excellent use of react, react-router, redux, redux-persist
